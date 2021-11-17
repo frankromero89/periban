@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid p-0 shipment">
+        <svg height="90vh">
+            <use 
+              href="{% static 'svg/hello_pig.svg' %}#pig_hello"
+            >
+            </use>
+        </svg>
+        <div class="container-shipment-options">
+            <h2 class="goboldItalic title-middle">HOLA</h2>
+            <div class="shipment-options">
+                <div id=toAddress class="shipment-opt flex justify-content-around">
+                    <!-- <img src="" alt=""> -->
+                    <p class="gobold mb-0">A DOMICILIO</p>
+                </div>
+                <div class="shipment-opt flex justify-content-around">
+                    <!-- <img src="" alt=""> -->
+                    <a href="{% url 'branches'%}" class="link-shipment gobold mb-0">RECOGER EN SUCURSAL</a>
+                </div>
+            </div>
+            <div id="google-map-container" class="container-form-map">
+                <input id="form-places" type="text">
+            </div>
+        </div>
+    </div>
+{% endblock %}

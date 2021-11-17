@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container p-0 shipment-coverage d-flex flex-column align-items-center">
+        <img class="moto-pig" src="{% static 'img/moto-pig.png' %}" alt="">
+        <div class="container-title-branches">
+            <div class="title-coverage">
+                <p class="disp-font yellow mb-0">Realiza tu pedido</p>
+                <p class="goboldItalic subtitle-coverage">TIENES COBERTURA EN ESTAS SUCURSALES</p>
+            </div>
+        </div>
+        <div class="container-addresses-coverage gobold">
+            <div class="branch-coverage d-flex flex-column align-items-center">
+                <p class="brown2 mb-0">{{name}}</p>
+                <p>{{address}}</p>
+                <div class="wa-tel coverage">
+                    <img src="{% static 'img/whats_logo.png' %}" alt="">
+                    <a href="https://wa.me/{{phone_link}}" target="_blank" class="brown2 mb-0">{{phone}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

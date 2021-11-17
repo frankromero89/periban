@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container bg-brown">
+        <div class="row">
+            <div class="menu-list mt-4 col-3 d-flex flex-column justify-content-start align-items-center">
+                <h1 class="title-big gobold">MENÚ</h1>
+                {% for menu in menus %}
+                    <a href="{% url 'menu' menu_name=menu.name %}" class="gobold name_menu_link">{{menu.name}}</a>
+                {% endfor %}
+            </div>
+            <div class="col-9 d-flex justify-content-md-evenly flex-wrap container-menus-link">
+                {% for platillo in platillos %}
+                    <div class="container-food {% if menu.subtitle %}with-subtitle{% endif %}">
+                        <img src="{{platillo.little_image.url}}" class="image-food w-100" alt="">
+                        <div class="title-food d-flex flex-column align-items-center">
+                            <p class="gobold name-menu-platillo">{{platillo.name}}</p>
+                            <a href="{% url 'platillos' name=platillo.url_name %}" class="price-food d-flex justify-content-around align-items-center">
+                                <p class="mb-0">DESCRIPCIÓN</p>
+                                <p class="mb-0 price">$ {{platillo.costo}}</p>
+                            </a>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

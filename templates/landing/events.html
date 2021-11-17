@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container events-container p-0 d-flex flex-column align-items-center">
+        <div class="event-form-container">
+            <div class="title-events">
+                <h1 class="disp-font yellow">Cotiza tu evento</h1>
+            </div>
+            <div class="form-events">
+                <form method="post" action="{% url 'events' %}">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <div class="input-container">
+                            <label for="exampleInputEmail1" class="form-label">Nombre</label>
+                            <input type="text" name="clientname" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                        </div>
+                        <div class="input-container">
+                            <label for="exampleInputEmail1" class="form-label">Teléfono</label>
+                            <input type="tel" name="phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                        </div>
+                        <div class="input-container">
+                            <label for="exampleInputEmail1" class="form-label">Fecha de evento</label>
+                            <input type="date" name="dateevent" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-container">
+                            <label for="exampleInputEmail1" class="form-label">Cantidad de personas</label>
+                            <input type="number" name="numberpersons" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                        </div>
+                        <div class="input-container">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                        </div>
+                    </div>
+                    <div class="input-group mb-3 d-flex">
+                        <div class="input-container w-50">
+                            <span class="form-label">Dirección</span>
+                            <textarea class="form-control" name="address" aria-label="With textarea"></textarea>
+                        </div>
+                        <div class="submit-container d-flex justify-content-center align-items-center">
+                            <button type="submit" class="btn send-form-event">Enviar</button>
+                        </div>
+                    </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

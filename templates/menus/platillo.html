@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container bg-brown platilo">
+        <div class="row">
+            <div class="menu-list col-3 d-flex flex-column justify-content-start align-items-center">
+                <h1 class="title-big gobold">MENÚ</h1>
+                {% for menu in menus %}
+                    <a href="{% url 'menu' menu_name=menu.name %}" class="gobold">{{menu.name}}</a>
+                {% endfor %}
+            </div>
+            <div class="col-9 ">
+                <div class="w-100 container-platilo">
+                    <div class="image-platillo">
+                        <img src="{{platillo.big_image.url}}" class="w-100 h-100" alt="">
+                    </div>
+                    <div class="description-platillo">
+                        <h2 class="gobold text-center">{{platillo.name}}</h2>
+                        <p class="mt-4">{{platillo.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container p-0 shipment d-flex flex-column align-items-center">
+        <div class="container-title-branches">
+            <img class="arm-pig" src="{% static 'img/arm_pig.png' %}" alt="">
+            <div class="title-branches">
+                <p class="disp-font yellow">Realiza tu pedido</p>
+            </div>
+        </div>
+        <div class="container-addresses gobold">
+            <div>
+                <p class="type-branch">Restaurantes</p>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">AJUSCO</p>
+                        <p>Halacho esq. KinchilH. de Padierna,Tlalpan, CDMX</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5587913477" target="_blank" class="brown2 mb-0">55 8791 3477</a>
+                    </div>
+                </div>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">AZTECAS</p>
+                        <p>Av. Aztecas 762, Ajusco Coyoacán, cdmx</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5515170679" target="_blank" class="brown2 mb-0">55 1517 0679</a>
+                    </div>
+                </div>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">MARINA</p>
+                        <p>Marina Nac. 240, Anáhuac, Miguel Hidalgo, cdmx</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5563942221" target="_blank" class="brown2 mb-0">55 6394 2221</a>
+                    </div>
+                </div>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">ROMA</p>
+                        <p>Campeche 171, Col. Roma Sur cdmx</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5552076146" target="_blank" class="brown2 mb-0">55 5207 6146</a>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="type-branch mt-4">TAQUERÍAS</p>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">COAPA</p>
+                        <p>
+                            Av. Prolongación División del Norte 4496 
+                            Prado Coapa, Tlalpan, CDMX</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5572590035" target="_blank" class="brown2 mb-0">55 7259 0035</a>
+                    </div>
+                </div>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">Cafetales</p>
+                        <p>
+                            V. de la Armada 1405 Col. Residencial Cafetales
+                            del Coyoacán, CDMX</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5526520576" target="_blank" class="brown2 mb-0">55 2652 0576</a>
+                    </div>
+                </div>
+                <div class="branch d-flex justify-content-between">
+                    <div class="branch-address">
+                        <p class="brown2">Ayuntamiento</p>
+                        <p>
+                            Ayuntamiento 87 Local D, Barrio la Lonja, Tlalpan, CDMX</p>
+                    </div>
+                    <div class="wa-tel">
+                        <img src="{% static 'img/whats_logo.png' %}" alt="">
+                        <a href="https://wa.me/5571553607" target="_blank" class="brown2 mb-0">55 7155 3607</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
