@@ -24,7 +24,7 @@ $(document).ready(function() {
         $(mapContainer).css('display', 'block');
     });
     actionPig();
-    scrollHome();
+    showMenuMobile();
 });
 
 function searchAddress(neiborhood){
@@ -63,8 +63,16 @@ function actionPig(){
     });
 }
 
-function scrollHome(){
-    $(".link-home-scroll").on("click", function(e){
-        console.log(this);
+function showMenuMobile(){
+    var menuIcon = document.getElementById("ic-mob-menu");
+    var menuMobile = document.getElementById("mobile-navbar");
+    var closeMenu = document.getElementById("icon-close-container");
+    $(menuIcon).on("click", function(e){
+        e.preventDefault();
+        $(menuMobile).addClass("show-menu");
+    })
+    $(closeMenu).on("click", function(e){
+        e.preventDefault();
+        $(menuMobile).removeClass("show-menu");
     })
 }

@@ -13,12 +13,39 @@ html {
     height: 110px;
     z-index: 3;
 }
+.icon-mobile-navbar{
+    display: none;
+}
+.logo-nav-mobile{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+}
 .link-nav{
     text-decoration: none;
 }
 .link-nav:hover{
     color: #BF520D;
     text-decoration: none;
+}
+.mobile-navbar{
+    height: calc(100vh - 110px);
+    width: 0;
+    transition: 2s;
+    display: none;
+}
+.mobile-navbar .icon-close-container{
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 0 1rem;
+}
+.mobile-navbar a{
+    margin: 1rem 0;
+    font-size: 1.5rem;    
 }
 
 .title-big{
@@ -55,7 +82,7 @@ html {
 }
 .branches-home-title{
     color: #fff;
-    margin: 2rem 0 4rem;
+    margin: 8rem 0 2rem;
 }
 .container-branches{
     width: 70%;
@@ -72,6 +99,7 @@ html {
     display: flex;
     align-items: center;
     justify-content: start;
+    flex-wrap: wrap;
 }
 .restaurant-branches .branch{
     width: 22%;
@@ -246,9 +274,11 @@ a .title-food .subtitle-menu{
     position: relative;
     padding-top: 110px !important;
 }
-.shipment-coverage{
+.shipment-coverage,
+.shipment-branches{
     background-image: url(../img/background-shipment.png);
     position: relative;
+    color: #fff;
 }
 .container-shipment-options{
     width: 50%;
@@ -460,26 +490,212 @@ a .title-food .subtitle-menu{
     }
 }
 
-/* Mobile  */
-
-@media screen and (max-width: 540px) {
-    .title-big{
-        font-size: 40px;
-    }
-    .container-slider{
-        height: 500px;
-    }
-}
-
 /* For Tablets */
-@media screen and (min-width: 540px) and (max-width: 780px) {
+/* @media screen and (min-width: 540px) and (max-width: 780px) { */
+@media screen and (max-width: 780px) {
     .container-slider{
         height: 600px;
     }
     .title-big{
         font-size: 50px;
     }
+    .icons-desktop-navbar{
+        display: none;
+    }
+    .icon-mobile-navbar{
+        display: block;
+        color: #fff;
+        margin-left: 2rem;
+    }
+    .logo-nav-mobile{
+        height: 80%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .logo-nav-mobile a{
+        text-align: center;
+        height: 100%;
+    }
+    .mobile-navbar.show-menu{
+        position: fixed;
+        top: 110px;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        align-items: start;
+        width: 50%;
+        transition: 2s;
+        z-index: 9999999999;
+        padding: 0 1rem;
+    }
+    .container-branches{
+        width: 90%;
+    }
+    .restaurant-branches .branch{
+        width: 40%;
+        margin: 1rem 5%;
+    }
+    .footer{
+        justify-content: space-evenly;
+    }
+    .footer .social-media{
+        flex-direction: column;
+        justify-content: center;
+        align-items: start;
+    }
+    .footer .social-media .link{
+        width: 100%;
+        margin: .5rem 0;
+    }
+    .footer .logo-footer{
+        height: 100px;
+    }
+    .footer .links-footer div{
+        flex-direction: column;
+    }
+    .pig-chat{
+        height: 80px;
+        right: 2%;
+        bottom: 4%;
+    }
+    .container-shipment-options{
+        width: 80%;
+    }
+    .shipment-opt{
+        font-size: 1.2rem;
+    }
+    .shipment-opt:hover{
+        font-size: 1.4rem;
+    }
+    .title-coverage{
+        font-size: 9rem;
+    }
+    .branch-coverage{
+        text-align: center;
+        margin-bottom: 100px;
+    }
+    @keyframes pig-moto {
+        from{transform: rotate(16deg); left: -20%;}
+        to{transform: rotate(0deg); left: 5%;}
+    }
+    .moto-pig{
+        left: 5%;
+        height: 150px;
+        animation-name: pig-moto;
+    }
+    .container-title-branches{
+        display: flex;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
+        align-items: start;
+        font-size: 9rem;
+        height: 450px;
+    }
+    @keyframes pig-arm {
+        from {left: -45%; top: -50%;}
+        to {left: 0; top: 0;}
+    }  
+    .arm-pig{
+        position: relative;
+        top: 0;
+        animation-name: pig-arm;
+        height: 250px;
+    }
+    .title-branches{
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+        width: 100%;
+        text-align: center;
+        font-size: 7rem;
+    }
+    .container-addresses .type-branch{
+        font-size: 1.8rem;
+    }
+    .branch{
+        flex-direction: column;
+        margin: 1.5rem 0;
+    }
+    .branch-address{
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    .container-addresses .branch .wa-tel{
+        width: 100%;
+        justify-content: center;
+    }
+    .event-form-container{
+        flex-direction: column;
+    }
+    .title-events{
+        width: 100%;
+    }
+    .form-events{
+        width: 100%;
+        padding: 0 1rem;
+        display: flex;
+        justify-content: center;
+    }
+    .form-events form{
+        width: 80%;
+    }
+    .input-group{
+        flex-direction: column;
+    }
+    .input-container{
+        margin: .5rem !important;
+    }
+    .input-container{
+        width: 100% !important;
+    }
+    .submit-container{
+        width: 100%;
+        margin-top: 1rem;
+    }
 }
+
+/* Mobile  */
+@media screen and (max-width: 540px) {
+    .title-big{
+        font-size: 40px;
+    }
+    .container-slider{
+        height: 400px;
+    }
+    .wa-tel img{
+        margin-right: .5rem;
+    }
+    .restaurant-branches .branch .wa-tel{
+        font-size: 16px;
+    }
+    .footer{
+        font-size: .8rem;
+    }
+    .footer .social-media img{
+        height: 20px;
+    }
+    .footer .logo-footer{
+        height: 80px;
+    }
+    .shipment-opt{
+        font-size: .8rem;
+    }
+    .shipment-opt:hover{
+        font-size: .8rem;
+    }
+    .title-coverage{
+        font-size: 7rem;
+    }
+    .moto-pig{
+        bottom: 40%;
+        left: 5%;
+        height: 120px;
+    }
+}
+
 
 /* Fonts */
 @font-face {
