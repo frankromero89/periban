@@ -1,6 +1,7 @@
 """Landing views"""
 from django.shortcuts import render
 from django.core.mail import BadHeaderError, send_mail
+from django.conf import settings
 
 def home(request):
     return render(request, 'landing/home.html')
@@ -70,8 +71,8 @@ def events(request):
             numero de personas: {num_persons}
             dirección: {address}
         """
-        
-        send_mail(subject, message, 'frankibeat@gmail.com', ['pau_vite@hotmail.com'], fail_silently=False)
+        email_from = settings.EMAIL_HOST_USER
+        send_mail(subject, message, email_from, ['pau_vite@hotmail.com'], fail_silently=False)
         # except BadHeaderError:
         #     print('Invalid header found.')
     return render(request, 'landing/events.html')
