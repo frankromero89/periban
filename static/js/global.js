@@ -57,10 +57,20 @@ function searchAddress(neiborhood){
 
 function actionPig(){
     const pigChat = document.getElementById("pig-chat");
-    console.log(pigChat);
     $(pigChat).click(function() {
         tidioChatApi.open();
+        $(pigChat).css('display', 'none');
     });
+    function onTidioChatClose(){
+        console.log('is closed');
+        $(pigChat).css('display', 'block');
+    }
+    // if (window.tidioChatApi) {
+    if (window.tidioChatApi) {
+        window.tidioChatApi.on("close", onTidioChatClose);
+    } else {
+        document.addEventListener("tidioChat-close", onTidioChatClose);
+    }
 }
 
 function showMenuMobile(){

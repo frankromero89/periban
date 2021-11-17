@@ -72,10 +72,26 @@ def events(request):
             dirección: {address}
         """
         email_from = settings.EMAIL_HOST_USER
-        send_mail(subject, message, email_from, ['pau_vite@hotmail.com'], fail_silently=False)
+        send_mail(subject, message, email_from, ['eventos@elperiban.com'], fail_silently=False)
         # except BadHeaderError:
         #     print('Invalid header found.')
     return render(request, 'landing/events.html')
 
 def employees(request):
+    if request.method == 'POST':
+        name = request.POST.get('nameEmployee')
+        last_name = request.POST.get('lastNameEmployee')
+        phone = request.POST.get('phoneEmployee')
+        email = request.POST.get('emailEmployee')
+        interests = request.POST.get('employeeText')
+        subject = 'Formulario de empleo'
+        message = f"""
+            Una persona lleno el formulario de bolsa de trabajo:
+            nombre: {name} {last_name}
+            teléfono: {phone}
+            correo: {email}
+            intereses: {interests}
+        """
+        email_from = settings.EMAIL_HOST_USER
+        send_mail(subject, message, email_from, ['rh@elperiban.com'], fail_silently=False)
     return render(request, 'landing/employee.html')

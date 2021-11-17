@@ -655,6 +655,24 @@ a .title-food .subtitle-menu{
         width: 100%;
         margin-top: 1rem;
     }
+    .title-employees{
+        text-align: center;
+    }
+    .container-global-employees{
+        flex-direction: column-reverse;
+    }
+    .img-pig-eyes{
+        width: 50%;
+    }
+    .img-pig-eyes object{
+        width: 100%;
+    }
+    .employees-form-container{
+        margin-top: 2rem;
+    }
+    .form-employees .input-group .input-container{
+        margin: .5rem 0 !important;
+    }
 }
 
 /* Mobile  */
