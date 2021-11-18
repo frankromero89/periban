@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container medios p-0 d-flex flex-column align-items-center">
+        <div class="title-medios">
+            <h1 class="disp-font">Hablando del Periban</h1>
+        </div>
+        <div class="container-fluid p-0 container-slider-medios">
+            <img src="{% static 'img/img-medios.png' %}" class="computer-medios" alt="img-medios">
+            <div id="sliderMedios" class="carousel carousel-dark slide" data-bs-ride="carousel">
+                <div class="carousel-inner h-100">
+                  <div class="carousel-item active h-100 position-relative item-slider">
+                    <iframe src="https://www.youtube.com/embed/KTBXOH5qing" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  <div class="carousel-item h-100 position-relative item-slider">
+                    <iframe src="https://www.youtube.com/embed/Mt5MpJHKaiY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  <div class="carousel-item h-100 position-relative item-slider">
+                    <iframe src="https://www.youtube.com/embed/5WnTWwL9n9g" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                  <div class="carousel-item h-100 position-relative item-slider">
+                    <iframe src="https://www.youtube.com/embed/TBIhQPv4wFI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#sliderMedios" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#sliderMedios" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+    </div>
+{% endblock %}

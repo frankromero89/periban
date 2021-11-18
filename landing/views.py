@@ -95,3 +95,6 @@ def employees(request):
         email_from = settings.EMAIL_HOST_USER
         send_mail(subject, message, email_from, ['rh@elperiban.com'], fail_silently=False)
     return render(request, 'landing/employee.html')
+
+def medios(request):
+    return render(request, 'landing/medios.html')

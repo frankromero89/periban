@@ -19,9 +19,9 @@
         <div class="pt-3 pb-1 w-100 h-100 icons-desktop-navbar">
             <div class="row w-100 h-100">
                 <div class="d-flex justify-content-md-around align-items-center col-5 h-100">
-                    <a href="#tradicion" class="gobold gold mb-0 link-nav link-home-scroll">UNA TRADICIÓN</a>
+                    <a href="{% url 'home' %}#tradicion" class="gobold gold mb-0 link-nav link-home-scroll">UNA TRADICIÓN</a>
                     <a href="{% url 'menus' %}" class="gobold gold mb-0 link-nav">NUESTRO MENÚ</a>
-                    <a href="#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
+                    <a href="{% url 'home' %}#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
                 </div>
                 <div class="col-2 h-100">
                     <a href="{% url 'home' %}">
@@ -31,7 +31,7 @@
                 <div class="d-flex justify-content-md-around align-items-center col-5 h-100">
                     <a href="{% url 'shipment' %}" class="gobold gold mb-0 link-nav">SERVICIO A</br>DOMICILIO</a>
                     <a href="{% url 'events' %}" class="gobold gold mb-0 link-nav">EVENTOS</a>
-                    <a href="" class="gobold gold mb-0 link-nav">MEDIOS</a>
+                    <a href="{% url 'medios' %}" class="gobold gold mb-0 link-nav">MEDIOS</a>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
         <a href="#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
         <a href="{% url 'shipment' %}" class="gobold gold mb-0 link-nav">SERVICIO A DOMICILIO</a>
         <a href="{% url 'events' %}" class="gobold gold mb-0 link-nav">EVENTOS</a>
-        <a href="" class="gobold gold mb-0 link-nav">MEDIOS</a>
+        <a href="{% url 'medios' %}" class="gobold gold mb-0 link-nav">MEDIOS</a>
     </div>
     <div class="container-fluid p-0">
         {% block container%}
