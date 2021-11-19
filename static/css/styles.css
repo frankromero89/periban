@@ -23,6 +23,9 @@ html {
     transform: translate(-50%, -50%);
     display: none;
 }
+.only-mobile{
+    display: none !important;
+}
 .link-nav{
     text-decoration: none;
 }
@@ -39,9 +42,11 @@ html {
 .mobile-navbar .icon-close-container{
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0 1rem;
+}
+.mobile-navbar .icon-close-container img{
+    height: 15px;
 }
 .mobile-navbar a{
     margin: 1rem 0;
@@ -122,6 +127,9 @@ html {
     display: flex;
     justify-content:space-around;
     padding: 2rem 0;
+}
+.logo-footer{
+    height: 150px;
 }
 .social-media{
     display: flex;
@@ -473,7 +481,8 @@ a .title-food .subtitle-menu{
 .title-employees{
     padding: 2rem 0;
 }
-.title-form-employees{
+.title-form-employees,
+.title-form-facturacion{
     text-align: center;
 }
 .form-employees{
@@ -511,13 +520,15 @@ a .title-food .subtitle-menu{
     width: 100%;
     height: 100%;
 }
-.carousel-control-prev{
+.container-slider-medios .carousel-control-prev{
     left: -15%;
 }
-.carousel-control-next{
+.container-slider-medios .carousel-control-next{
     right: -15%;
 }
-
+.facturacion-container{
+    padding: 2rem 0;
+}
 @media screen and (max-width: 1250px) {
     .platon-img{
       width: 70%
@@ -534,6 +545,10 @@ a .title-food .subtitle-menu{
     }
     .container-title-branches{
         font-size: 10rem;
+    }
+    .container-food{
+        width: 30%;
+        /* margin-top: 2rem; */
     }
 }
 
@@ -553,6 +568,7 @@ a .title-food .subtitle-menu{
         display: block;
         color: #fff;
         margin-left: 2rem;
+        height: 15%;
     }
     .logo-nav-mobile{
         height: 80%;
@@ -575,7 +591,7 @@ a .title-food .subtitle-menu{
         width: 50%;
         transition: 2s;
         z-index: 9999999999;
-        padding: 0 1rem;
+        padding: 1rem;
     }
     .container-branches{
         width: 90%;
@@ -607,6 +623,9 @@ a .title-food .subtitle-menu{
         right: 2%;
         bottom: 4%;
     }
+    .container-food{
+        width: 40%;
+    }
     .container-shipment-options{
         width: 80%;
     }
@@ -622,6 +641,9 @@ a .title-food .subtitle-menu{
     .branch-coverage{
         text-align: center;
         margin-bottom: 100px;
+    }
+    .logo-quality{
+        height: 200px;
     }
     @keyframes pig-moto {
         from{transform: rotate(16deg); left: -20%;}
@@ -727,16 +749,16 @@ a .title-food .subtitle-menu{
         left: 15.7%;
         width: 69.7%;
     }
-    /* .carousel-control-prev{
-        left: -20%;
+    .events-container{
+        background-image: url(../img/background-event-mob.png);
     }
-    .carousel-control-next{
-        right: -20%;
-    } */
 }
 
 /* Mobile  */
 @media screen and (max-width: 540px) {
+    .only-desktop{
+        display: none !important;
+    }
     .title-big{
         font-size: 40px;
     }
@@ -781,6 +803,15 @@ a .title-food .subtitle-menu{
     }
     .title-medios h1{
         font-size: 6rem;
+    }
+    .event-form-container{
+        margin-top: 55vh;
+    }
+    .title-events h1{
+        font-size: 6rem;
+    }
+    .form-events .form-control{
+        padding: 0;
     }
 }
 

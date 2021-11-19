@@ -98,3 +98,6 @@ def employees(request):
 
 def medios(request):
     return render(request, 'landing/medios.html')
+
+def invoices(request):
+    return render(request, 'landing/invoices.html')

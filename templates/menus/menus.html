@@ -3,10 +3,10 @@
 {% block container %}
     <div class="container-fluid principal-container bg-brown">
         <div class="row">
-            <div class="col-3 d-flex justify-content-center">
+            <div class="col-3 d-flex justify-content-center only-desktop">
                 <img src="{% static 'img/menu-sticker.png' %}" class="w-100 img-menu-banner" alt="">
             </div>
-            <div class="col-9 d-flex justify-content-md-evenly flex-wrap container-menus-link">
+            <div class="col-12 col-sm-9 d-flex justify-content-evenly flex-wrap container-menus-link">
                 {% for menu in menus %}
                     <div class="container-food {% if menu.subtitle %}with-subtitle{% endif %}">
                         <img src="{{menu.image.url}}" class="image-food w-100" alt="">

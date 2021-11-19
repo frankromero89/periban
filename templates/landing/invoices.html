@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container p-0 d-flex justify-content-center align-items-start">
+            <div class="facturacion-container">
+                <div class="title-form-facturacion">
+                    <h1 class="gobold yellow">Ingresa los siguientes datos </br> para tu factura</h1>
+                </div>
+                <div class="form-employees">
+                    <form method="post" action="{% url 'employees' %}">
+                        {% csrf_token %}
+                        <div class="input-group mb-3">
+                            <div class="input-container">
+                                <label for="exampleInputEmail1" class="form-label">Nombre Completo</label>
+                                <input type="text" name="nameEmployee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                            </div>
+                            <div class="input-container">
+                                <label for="exampleInputEmail1" class="form-label">RFC</label>
+                                <input type="text" name="lastNameEmployee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-container">
+                                <label for="exampleInputEmail1" class="form-label">Teléfono</label>
+                                <input type="tel" name="phoneEmployee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                            </div>
+                            <div class="input-container">
+                                <label for="exampleInputEmail1" class="form-label">Email</label>
+                                <input type="email" name="emailEmployee" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">    
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-center align-items-center">
+                            <button type="submit" class="btn send-form-event">Enviar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+    </div>
+{% endblock %}
