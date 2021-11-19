@@ -2,7 +2,10 @@
 {% load static %}
 {% block container %}
     <div class="container-fluid principal-container bg-brown">
-        <div class="row">
+        <div class="row ">
+            <div class="col-12 d-flex justify-content-center align-items-center menu-img-mob only-mobile">
+                <img src="{% static 'img/img-menu-mob.png' %}" alt="">
+            </div>
             <div class="col-3 d-flex justify-content-center only-desktop">
                 <img src="{% static 'img/menu-sticker.png' %}" class="w-100 img-menu-banner" alt="">
             </div>

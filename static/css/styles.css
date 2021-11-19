@@ -26,6 +26,9 @@ html {
 .only-mobile{
     display: none !important;
 }
+.only-desktop{
+    display: block !important;
+}
 .link-nav{
     text-decoration: none;
 }
@@ -205,6 +208,12 @@ a .title-food .subtitle-menu{
 }
 
 
+.menu-img-mob{
+    width: 80%;
+}
+.menu-img-mob img{
+    width: 100%;
+}
 .img-menu-banner{
     margin-top: 2rem;
 }
@@ -235,7 +244,6 @@ a .title-food .subtitle-menu{
     color: #F5830B;
     font-size: 1rem;
 }
-
 .name-menu-platillo{
     font-size: 18px;
 }
@@ -758,6 +766,9 @@ a .title-food .subtitle-menu{
 @media screen and (max-width: 540px) {
     .only-desktop{
         display: none !important;
+    }
+    .only-mobile{
+        display: block !important;
     }
     .title-big{
         font-size: 40px;
