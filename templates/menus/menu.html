@@ -3,11 +3,13 @@
 {% block container %}
     <div class="container-fluid principal-container bg-brown">
         <div class="row">
-            <div class="menu-list mt-4 col-3 d-flex flex-column justify-content-start align-items-center only-desktop">
+            <div class="menu-list mt-4 col-12 col-sm-3 d-flex flex-column justify-content-start align-items-center">
                 <h1 class="title-big gobold">MENÚ</h1>
+                <div class="name_menus">
                 {% for menu in menus %}
                     <a href="{% url 'menu' menu_name=menu.name %}" class="gobold name_menu_link">{{menu.name}}</a>
                 {% endfor %}
+                </div>
             </div>
             <div class="col-12 col-sm-9 d-flex justify-content-evenly flex-wrap container-menus-link">
                 {% for platillo in platillos %}

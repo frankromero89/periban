@@ -100,4 +100,21 @@ def medios(request):
     return render(request, 'landing/medios.html')
 
 def invoices(request):
+    if request.method == 'POST':
+        name = request.POST.get('nameInvoice')
+        rfc = request.POST.get('rfcInvoice')
+        phone = request.POST.get('phoneInvoice')
+        email = request.POST.get('emailInvoice')
+        interests = request.POST.get('textInvoice')
+        subject = 'Problema facturación'
+        message = f"""
+            Una persona indicó que tiene problemas con su facturación sus datos són:
+            nombre: {name}
+            rfc: {rfc}
+            teléfono: {phone}
+            correo: {email}
+            intereses: {interests}
+        """
+        email_from = settings.EMAIL_HOST_USER
+        send_mail(subject, message, email_from, ['mesadecontrol@elperiban.com'], fail_silently=False)
     return render(request, 'landing/invoices.html')

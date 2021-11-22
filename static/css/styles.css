@@ -208,9 +208,9 @@ a .title-food .subtitle-menu{
 }
 
 
-.menu-img-mob{
+/* .menu-img-mob{
     width: 80%;
-}
+} */
 .menu-img-mob img{
     width: 100%;
 }
@@ -220,11 +220,15 @@ a .title-food .subtitle-menu{
 .menu-list{
     margin-bottom: 2rem;
 }
-.menu-list a{
+.name_menus{
+    display: flex;
+    flex-direction: column;
+}
+.menu-list .name_menus a{
     color: #845A2C;
     text-decoration: none;
 }
-.menu-list a:hover{
+.menu-list .name_menus a:hover{
     color: #BF520D;
     text-decoration: none;
 }
@@ -296,6 +300,13 @@ a .title-food .subtitle-menu{
     position: relative;
     color: #fff;
 }
+#liveAlertPlaceholder{
+    width: 80%;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .container-shipment-options{
     width: 50%;
     top: 50%;
@@ -346,6 +357,10 @@ a .title-food .subtitle-menu{
     display: none;
     background-color: #fff;
     color: red;
+}
+.spinner-loading{
+    margin-top: 1rem;
+    display: none;
 }
 
 .container-title-branches{
@@ -631,6 +646,19 @@ a .title-food .subtitle-menu{
         right: 2%;
         bottom: 4%;
     }
+    .principal-container.menus{
+        padding-bottom: 1rem;
+    }
+    .name_menus{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: start;
+    }
+    .name_menu_link{
+        font-size: 1rem;
+        margin: .5rem;
+    }
     .container-food{
         width: 40%;
     }
@@ -763,7 +791,7 @@ a .title-food .subtitle-menu{
 }
 
 /* Mobile  */
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 576px) {
     .only-desktop{
         display: none !important;
     }
@@ -823,6 +851,34 @@ a .title-food .subtitle-menu{
     }
     .form-events .form-control{
         padding: 0;
+    }
+    .name_menus{
+        flex-direction: row;
+    }
+    .container-menus-link{
+        margin-bottom: 1rem;
+    }
+    .container-food a{
+        font-size: .75rem;
+        flex-direction: column;
+    }
+    .image-food{
+        height: auto;
+    }
+    .principal-container.platilo{
+        padding-top: 1rem;
+    }
+    .container-platilo{
+        flex-direction: column;
+        height: 700px;
+    }
+    .image-platillo{
+        width: 100%;
+    }
+    .description-platillo{
+        width: 100%;
+        height: auto;
+        padding: 1rem;
     }
 }
 

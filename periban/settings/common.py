@@ -86,10 +86,10 @@ DATABASES = {
     # },
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'periban',
-        'USER': 'frankrom',
-        'PASSWORD': 'frank123',
-        'HOST': 'localhost',
+        'NAME': os.getenv('PERIBAN_DB_NAME'),
+        'USER': os.getenv('PERIBAN_DB_USER'),
+        'PASSWORD': os.getenv('PERIBAN_DB_PASSWORD'),
+        'HOST': os.getenv('PERIBAN_DB_HOST'),
         'PORT': '',
     }
 }
