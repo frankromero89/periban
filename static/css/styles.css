@@ -189,6 +189,13 @@ a .title-food .subtitle-menu{
     max-height: 550px;
     max-width: 792px;
 }
+#sliderBranches{
+    height: 500px;
+}
+/* .slide-branch{
+    height: 100%;
+    background-image: url(../img/sucursales/ayuntamiento2.png);
+} */
 
 .pig-chat{
     height: 100px;
@@ -240,6 +247,9 @@ a .title-food .subtitle-menu{
 .container-food{
     width: 23%;
     margin-top: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .image-food{
     height: 150px
@@ -477,6 +487,13 @@ a .title-food .subtitle-menu{
     width: 50%;
     text-align: center;
 }
+.link-prices{
+    color: #fff;
+    text-decoration: none;
+}
+.link-prices:hover{
+    color: #fff;
+}
 .title-events h1{
     font-size: 12rem;
 }
@@ -552,6 +569,13 @@ a .title-food .subtitle-menu{
 .facturacion-container{
     padding: 2rem 0;
 }
+.privacityNotice-container{
+    padding: 2rem;
+}
+.title-privacity{
+    text-align: center;
+}
+
 @media screen and (max-width: 1250px) {
     .platon-img{
       width: 70%
@@ -806,6 +830,10 @@ a .title-food .subtitle-menu{
     }
     .wa-tel img{
         margin-right: .5rem;
+    }
+    #sliderBranches{
+        height: 350px;
+        width: 90%;
     }
     .restaurant-branches .branch .wa-tel{
         font-size: 16px;

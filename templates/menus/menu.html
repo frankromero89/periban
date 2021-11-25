@@ -11,19 +11,21 @@
                 {% endfor %}
                 </div>
             </div>
-            <div class="col-12 col-sm-9 d-flex justify-content-evenly flex-wrap container-menus-link">
-                {% for platillo in platillos %}
-                    <div class="container-food {% if menu.subtitle %}with-subtitle{% endif %}">
-                        <img src="{{platillo.little_image.url}}" class="image-food w-100" alt="">
-                        <div class="title-food d-flex flex-column align-items-center">
-                            <p class="gobold name-menu-platillo">{{platillo.name}}</p>
-                            <a href="{% url 'platillos' name=platillo.url_name %}" class="price-food d-flex justify-content-around align-items-center">
-                                <p class="mb-0">DESCRIPCIÓN</p>
-                                <p class="mb-0 price">$ {{platillo.costo}}</p>
-                            </a>
+            <div class="col-12 col-sm-9 container-menus-link">
+                <div class="row justify-content-evenly">
+                    {% for platillo in platillos %}
+                        <div class="container-food col-5 col-md-4 col-lg-3 {% if menu.subtitle %}with-subtitle{% endif %}">
+                            <img src="{{platillo.little_image.url}}" class="image-food w-100" alt="">
+                            <div class="title-food d-flex flex-column align-items-center">
+                                <p class="gobold name-menu-platillo">{{platillo.name}}</p>
+                                <a href="{% url 'platillos' name=platillo.url_name %}" class="price-food d-flex justify-content-around align-items-center">
+                                    <p class="mb-0">DESCRIPCIÓN</p>
+                                    <p class="mb-0 price">$ {{platillo.costo}}</p>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>

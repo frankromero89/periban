@@ -118,3 +118,6 @@ def invoices(request):
         email_from = settings.EMAIL_HOST_USER
         send_mail(subject, message, email_from, ['mesadecontrol@elperiban.com'], fail_silently=False)
     return render(request, 'landing/invoices.html')
+
+def privacy_notice(request):
+    return render(request, 'landing/terms_conditions.html')

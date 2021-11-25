@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load markdown_extras %}
 {% block container %}
     <div class="container-fluid principal-container bg-brown platilo">
         <div class="row">
@@ -18,7 +19,7 @@
                     </div>
                     <div class="description-platillo">
                         <h2 class="gobold text-center">{{platillo.name}}</h2>
-                        <p class="mt-4">{{platillo.description}}</p>
+                        <p class="mt-4">{{ platillo.description | markdown | safe }}</p>
                     </div>
                 </div>
             </div>
