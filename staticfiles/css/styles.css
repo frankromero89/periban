@@ -26,6 +26,9 @@ html {
 .only-mobile{
     display: none !important;
 }
+.only-desktop{
+    display: block !important;
+}
 .link-nav{
     text-decoration: none;
 }
@@ -186,6 +189,13 @@ a .title-food .subtitle-menu{
     max-height: 550px;
     max-width: 792px;
 }
+#sliderBranches{
+    height: 500px;
+}
+/* .slide-branch{
+    height: 100%;
+    background-image: url(../img/sucursales/ayuntamiento2.png);
+} */
 
 .pig-chat{
     height: 100px;
@@ -205,17 +215,27 @@ a .title-food .subtitle-menu{
 }
 
 
+/* .menu-img-mob{
+    width: 80%;
+} */
+.menu-img-mob img{
+    width: 100%;
+}
 .img-menu-banner{
     margin-top: 2rem;
 }
 .menu-list{
     margin-bottom: 2rem;
 }
-.menu-list a{
+.name_menus{
+    display: flex;
+    flex-direction: column;
+}
+.menu-list .name_menus a{
     color: #845A2C;
     text-decoration: none;
 }
-.menu-list a:hover{
+.menu-list .name_menus a:hover{
     color: #BF520D;
     text-decoration: none;
 }
@@ -227,6 +247,9 @@ a .title-food .subtitle-menu{
 .container-food{
     width: 23%;
     margin-top: 2rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 .image-food{
     height: 150px
@@ -235,7 +258,6 @@ a .title-food .subtitle-menu{
     color: #F5830B;
     font-size: 1rem;
 }
-
 .name-menu-platillo{
     font-size: 18px;
 }
@@ -288,6 +310,13 @@ a .title-food .subtitle-menu{
     position: relative;
     color: #fff;
 }
+#liveAlertPlaceholder{
+    width: 80%;
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    transform: translateX(-50%);
+}
 .container-shipment-options{
     width: 50%;
     top: 50%;
@@ -338,6 +367,10 @@ a .title-food .subtitle-menu{
     display: none;
     background-color: #fff;
     color: red;
+}
+.spinner-loading{
+    margin-top: 1rem;
+    display: none;
 }
 
 .container-title-branches{
@@ -454,6 +487,13 @@ a .title-food .subtitle-menu{
     width: 50%;
     text-align: center;
 }
+.link-prices{
+    color: #fff;
+    text-decoration: none;
+}
+.link-prices:hover{
+    color: #fff;
+}
 .title-events h1{
     font-size: 12rem;
 }
@@ -529,6 +569,35 @@ a .title-food .subtitle-menu{
 .facturacion-container{
     padding: 2rem 0;
 }
+.privacityNotice-container{
+    padding: 2rem;
+}
+.title-privacity{
+    text-align: center;
+}
+.form-staff{
+    width:70%;
+    color: #845A2C;
+}
+.forms-container{
+    padding: 2rem 1rem;
+}
+.item-form-list{
+    color: #000;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.item-form-list:hover{
+    color: #BAA491;   
+}
+.element-form{
+    margin-top: 2rem;
+}
+.options-input{
+    margin-left: .5rem;
+}
+
+
 @media screen and (max-width: 1250px) {
     .platon-img{
       width: 70%
@@ -622,6 +691,19 @@ a .title-food .subtitle-menu{
         height: 80px;
         right: 2%;
         bottom: 4%;
+    }
+    .principal-container.menus{
+        padding-bottom: 1rem;
+    }
+    .name_menus{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        align-items: start;
+    }
+    .name_menu_link{
+        font-size: 1rem;
+        margin: .5rem;
     }
     .container-food{
         width: 40%;
@@ -752,12 +834,18 @@ a .title-food .subtitle-menu{
     .events-container{
         background-image: url(../img/background-event-mob.png);
     }
+    .form-staff{
+        width:100%;
+    }
 }
 
 /* Mobile  */
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 576px) {
     .only-desktop{
         display: none !important;
+    }
+    .only-mobile{
+        display: block !important;
     }
     .title-big{
         font-size: 40px;
@@ -767,6 +855,10 @@ a .title-food .subtitle-menu{
     }
     .wa-tel img{
         margin-right: .5rem;
+    }
+    #sliderBranches{
+        height: 350px;
+        width: 90%;
     }
     .restaurant-branches .branch .wa-tel{
         font-size: 16px;
@@ -812,6 +904,34 @@ a .title-food .subtitle-menu{
     }
     .form-events .form-control{
         padding: 0;
+    }
+    .name_menus{
+        flex-direction: row;
+    }
+    .container-menus-link{
+        margin-bottom: 1rem;
+    }
+    .container-food a{
+        font-size: .75rem;
+        flex-direction: column;
+    }
+    .image-food{
+        height: auto;
+    }
+    .principal-container.platilo{
+        padding-top: 1rem;
+    }
+    .container-platilo{
+        flex-direction: column;
+        height: 700px;
+    }
+    .image-platillo{
+        width: 100%;
+    }
+    .description-platillo{
+        width: 100%;
+        height: auto;
+        padding: 1rem;
     }
 }
 

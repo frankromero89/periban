@@ -575,6 +575,28 @@ a .title-food .subtitle-menu{
 .title-privacity{
     text-align: center;
 }
+.form-staff{
+    width:70%;
+    color: #845A2C;
+}
+.forms-container{
+    padding: 2rem 1rem;
+}
+.item-form-list{
+    color: #000;
+    font-size: 1.5rem;
+    text-decoration: none;
+}
+.item-form-list:hover{
+    color: #BAA491;   
+}
+.element-form{
+    margin-top: 2rem;
+}
+.options-input{
+    margin-left: .5rem;
+}
+
 
 @media screen and (max-width: 1250px) {
     .platon-img{
@@ -811,6 +833,9 @@ a .title-food .subtitle-menu{
     }
     .events-container{
         background-image: url(../img/background-event-mob.png);
+    }
+    .form-staff{
+        width:100%;
     }
 }
 

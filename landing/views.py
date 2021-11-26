@@ -2,6 +2,9 @@
 from django.shortcuts import render
 from django.core.mail import BadHeaderError, send_mail
 from django.conf import settings
+from typing import List
+
+from landing.models import Form_type, Question_form, answer_form
 
 def home(request):
     return render(request, 'landing/home.html')
@@ -98,6 +101,50 @@ def employees(request):
 
 def medios(request):
     return render(request, 'landing/medios.html')
+
+def forms_list(request):
+    forms = Form_type.objects.all()
+    return render(request, 'landing/forms_list.html', {'forms': forms})
+
+def form_view(request, form):
+    if request.method == 'POST':
+        # import pdb; pdb.set_trace()
+        answer_row = answer_form.objects.all().last()
+        last_form = answer_row.form_id + 1 if answer_row else 1
+        checks = {}
+        for i, qst_answer in request.POST.items():
+            if i != 'csrfmiddlewaretoken':
+                if len(i) > 1:
+                    name_option=i.split("-")
+                    checks[name_option[0]] = f'{checks[name_option[0]]};{qst_answer}' if checks.get(name_option[0]) else qst_answer
+                else:
+                    question = Question_form.objects.get(question_id=i)
+                    answer = answer_form(form_id=last_form, question_id=question, answer=qst_answer, answer_by=request.user)
+                    answer.save()
+        if len(checks) > 0:
+            for i, check in checks.items():
+                question = Question_form.objects.get(question_id=i)
+                answer = answer_form(form_id=1, question_id=question, answer=check, answer_by=request.user)
+                answer.save()
+        forms = Form_type.objects.all()
+        return render(request, 'landing/forms_list.html', {'forms': forms})
+    form_questions = Question_form.objects.filter(form_type__form_id=form)
+    questions = []
+    for qst in form_questions:
+        options_list = qst.options.split(';') if qst.options else []
+        questions.append({
+            'id': qst.question_id,
+            'label': qst.question_description,
+            'is_options': qst.is_options,
+            'is_check': qst.is_check,
+            'options': {
+                i : options_list[i] for i in range(len(options_list))
+            }
+        })
+    return render(request, 'landing/forms_list.html', {
+        'questions': questions,
+        'form': form_questions[0].form_type
+    })
 
 def invoices(request):
     if request.method == 'POST':

@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="container-fluid principal-container p-0 d-flex justify-content-center align-items-start">
+            <div class="forms-container w-100">
+                <div class="title-privacity">
+                    <h1 class="gobold">Formularios Operación</h1>
+                </div>
+                <div class="w-100">
+                    {% if forms %}
+                    <ul>
+                        {% for form in forms %}
+                            <a class="item-form-list gobold" href="{% url 'form' form=form.form_id%}">
+                                <li>{{form.form_name}}</li>
+                            </a>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% if questions %}
+                        <div class="form-staff">
+                            <form method="post" action="{% url 'form' form=form.form_id%}">
+                                {% csrf_token %}
+                                {% for question in questions %}
+                                    {% if question.is_options %}
+                                    <fieldset class="row mb-3 element-form options-input">
+                                        <legend class="col-form-label col-sm-2 pt-0">{{question.label}}</legend>
+                                        <div class="col-sm-10">
+                                        {% for index, option in question.options.items %}
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="{{question.id}}" id="gridRadios{{index}}" value="{{option}}">
+                                                <label class="form-check-label" for="gridRadios{{index}}">
+                                                    {{option}}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    </fieldset>
+                                    {% elif question.is_check %}
+                                    <fieldset class="row mb-3 element-form options-input">
+                                        <legend class="col-form-label col-sm-2 pt-0">{{question.label}}</legend>
+                                        <div class="col-sm-10">
+                                        {% for index, option in question.options.items %}
+                                            <div class="form-check">
+                                                <input class="form-check-input" name="{{question.id}}-{{index}}" type="checkbox" value="{{option}}" id="flexCheck{{index}}">
+                                                <label class="form-check-label" for="flexCheck{{index}}">
+                                                    {{option}}
+                                                </label>
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    </fieldset>
+                                    {% else %}
+                                        <div class="input-container element-form">
+                                            <label for="exampleInputEmail1" class="form-label">{{question.label}}</label>
+                                            <input type="text" name="{{question.id}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                        </div>
+                                    {% endif %}
+                                {% endfor %}
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <button type="submit" class="btn send-form-event">Enviar</button>
+                                </div>
+                            </form>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+    </div>
+{% endblock %}

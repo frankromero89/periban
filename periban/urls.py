@@ -36,4 +36,6 @@ urlpatterns = [
     path('facturacion/', landing_views.invoices, name="invoices"),
     path('aviso_privacidad/', landing_views.privacy_notice, name="privacy"),
     path('users/login/', landing_views.login_view, name="login"),
+    path('staff/formularios/', landing_views.forms_list, name="form_list"),
+    path('staff/formularios/<str:form>', landing_views.form_view, name="form")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

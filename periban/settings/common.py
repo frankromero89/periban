@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # Local apps
     'landing',
     'menus',
+    'adminsortable2',
 ]
 
 MIDDLEWARE = [
