@@ -32,6 +32,9 @@
                     <a href="{% url 'shipment' %}" class="gobold gold mb-0 link-nav">SERVICIO A</br>DOMICILIO</a>
                     <a href="{% url 'events' %}" class="gobold gold mb-0 link-nav">EVENTOS</a>
                     <a href="{% url 'medios' %}" class="gobold gold mb-0 link-nav">MEDIOS</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'logout' %}" class="gobold gold mb-0 link-nav">LOG OUT</a>
+                    {% endif %}
                 </div>
             </div>
         </div>

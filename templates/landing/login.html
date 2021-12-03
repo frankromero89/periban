@@ -1,5 +1,30 @@
 {% extends "base.html" %}
 {% load static %}
 {% block container %}
-    <h1 class="container-slider">Login</h1>
+    <div class="container-fluid principal-container p-0 d-flex justify-content-center align-items-start">
+        <div class="login-form-container">
+            <img src="{% static 'img/periban-logo.png' %}" class="img-fluid h-100" alt="...">
+            {% if error %}
+                <div class="alert alert-danger error-login" role="alert">
+                    Credenciales incorrectas. Validar tus datos
+                </div>
+            {% endif%}
+            <div class="login-inputs">
+                <form method="post" action="{% url 'login' %}">
+                    {% csrf_token %}
+                    <div class="input-container gobold">
+                        <label for="userInputName" class="form-label">Usuario</label>
+                        <input type="text" name="userName" class="form-control" id="userInputName" aria-describedby="emailHelp">
+                    </div>
+                    <div class="input-container gobold">
+                        <label for="userInputPassword" class="form-label">Contraseña</label>
+                        <input type="password" name="userPassword" class="form-control" id="userInputPassword" aria-describedby="emailHelp">    
+                    </div>
+                    <div class="submit-container-login d-flex justify-content-center align-items-center">
+                        <button type="submit" class="btn send-form-event">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 {% endblock %}

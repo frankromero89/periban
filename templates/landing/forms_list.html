@@ -10,11 +10,41 @@
                     {% if forms %}
                     <ul>
                         {% for form in forms %}
-                            <a class="item-form-list gobold" href="{% url 'form' form=form.form_id%}">
+                            <a class="item-form-list gobold" href="{% url 'form' form=form.form_id %}">
                                 <li>{{form.form_name}}</li>
                             </a>
                         {% endfor %}
                     </ul>
+                    {% endif %}
+                    {% if forms_answers %}
+                        <div class="answers_container mt-4">
+                            <h1 class="gobold">Registros cuestionarios</h1>
+                            <ul>
+                                {% for form_ans in forms_answers %}
+                                <a class="item-form-list gobold" href="{% url 'form_answers' form=form_ans.form_type__form_id %}">
+                                    <li>{{form_ans.created}} - {{form_ans.form_type__form_name}}</li>
+                                </a>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if answers %}
+                        <a href="{% url 'form_list' %}"class="gobold btn-back"><- Regresar</a>
+                        <div class="info-form">
+                            <p class="gobold" style="color: #BF520D;">Fecha: {{date}}</p>
+                            <p class="gobold" style="color: #BF520D;">Área: {{form_type}}</p>
+                            <p class="gobold" style="color: #BF520D;">Aplicado: {{applied}}</p>
+                        </div>
+                        <ul class="mt-4 list-answers">
+                            {% for answer in answers %}
+                                <li>
+                                    <div>
+                                        <p><strong>{{answer.question_id.question_description}}</strong></p>
+                                        <p style="margin-left:1rem;">{{answer.answer}}</p>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
                     {% endif %}
                     {% if questions %}
                         <div class="form-staff">
@@ -56,7 +86,11 @@
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-                                <div class="d-flex justify-content-center align-items-center">
+                                <div class="input-container element-form">
+                                    <label for="inputEvidenceImage" class="form-label">Evidencia</label>
+                                    <input type="file" name="imageEvidence" class="form-control" id="inputEvidenceImage" aria-describedby="evidence" required="true">
+                                </div>
+                                <div class="d-flex justify-content-center align-items-center mt-4">
                                     <button type="submit" class="btn send-form-event">Enviar</button>
                                 </div>
                             </form>

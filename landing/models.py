@@ -2,6 +2,8 @@ from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
 
+from datetime import date
+
 class Profile(models.Model):
     """Profile Model"""
     OPERATOR = 'Optor'
@@ -50,10 +52,20 @@ class Question_form(models.Model):
 
 class answer_form(models.Model):
     form_id = models.IntegerField()
+    form_type = models.ForeignKey(Form_type, on_delete=models.CASCADE, default="1")
     question_id = models.ForeignKey(Question_form, on_delete=models.CASCADE)
     answer = models.TextField(default="")
     answer_by = models.ForeignKey(User, on_delete=models.CASCADE, default="")
-    created = models.DateTimeField(default= timezone.now)
+    created = models.DateField(default= date.today)
 
     def __str__(self):
         return self.answer
+
+class image_evidence(models.Model):
+    id = models.AutoField(primary_key=True)
+    form_id = models.ForeignKey(answer_form, on_delete=models.CASCADE)
+    image_evidence = models.ImageField(upload_to='landing/images/evidence')
+    created = models.DateTimeField(default= timezone.now)
+
+    def __str__(self):
+        return self.id
