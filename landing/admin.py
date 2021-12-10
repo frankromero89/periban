@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
 
-from landing.models import Profile as Profile, Form_type, Question_form, answer_form
+from landing.models import Profile as Profile, Form_type, Question_form, answer_form, image_evidence
 
 
 # Register your models here.
@@ -21,6 +21,9 @@ class FormTypeAdmin(admin.ModelAdmin):
 class QuestionFormsAdmin(SortableAdminMixin, admin.ModelAdmin):
     list_display = ('question_description', 'form_type', 'is_active')
 
+@admin.register(image_evidence)
+class ImageEvidenceAdmin(SortableAdminMixin, admin.ModelAdmin):
+    list_display = ('form_id', 'image_evidence',)
 
 @admin.register(answer_form)
 class AnswerFormsAdmin(admin.ModelAdmin):

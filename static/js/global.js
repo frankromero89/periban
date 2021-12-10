@@ -50,6 +50,8 @@ function searchAddress(neiborhood){
         var aztecas = data.aztecas;
         var coapa = data.coapa;
         var ayuntamiento = data.ayuntamiento;
+        var marina = data.marina;
+        var roma = data.roma;
 
         if ($.inArray(neiborhood, ajusco) >= 0) {
             window.location.replace(window.location.origin + "/cobertura?sucursal=ajusco")
@@ -59,6 +61,10 @@ function searchAddress(neiborhood){
             window.location.replace(window.location.origin + "/cobertura?sucursal=coapa")
         }else if ($.inArray(neiborhood, ayuntamiento) >= 0) {
             window.location.replace(window.location.origin + "/cobertura?sucursal=ayuntamiento")
+        }else if ($.inArray(neiborhood, marina) >= 0) {
+            window.location.replace(window.location.origin + "/cobertura?sucursal=marina")
+        }else if ($.inArray(neiborhood, roma) >= 0) {
+                window.location.replace(window.location.origin + "/cobertura?sucursal=roma")
         }else {
             alert('Lo sentimos por el momento no tenemos cobertura en esa dirección, haz tu pedido y recoge en sucursal.', 'warning')
             $(loader).css('display', 'none');

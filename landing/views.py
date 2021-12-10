@@ -7,7 +7,8 @@ from django.conf import settings
 from typing import List
 from django.db.models import Count
 
-from landing.models import Form_type, Question_form, answer_form
+from landing.forms import ImageForm
+from landing.models import Form_type, Question_form, answer_form, image_evidence
 
 def home(request):
     return render(request, 'landing/home.html')
@@ -145,10 +146,11 @@ def form_view(request, form):
         answer_row = answer_form.objects.all().last()
         form_type = Form_type.objects.get(form_id=form)
         last_form = answer_row.form_id + 1 if answer_row else 1
+        form_image = ImageForm(request.POST, request.FILES)
+        # import pdb; pdb.set_trace()
         checks = {}
         for i, qst_answer in request.POST.items():
-            print(i)
-            if i != 'csrfmiddlewaretoken' and i != 'imageEvidence':
+            if i != 'csrfmiddlewaretoken' and i != 'imageEvidence' and i != 'form_id':
                 if len(i) > 1:
                     name_option=i.split("-")
                     checks[name_option[0]] = f'{checks[name_option[0]]};{qst_answer}' if checks.get(name_option[0]) else qst_answer
@@ -162,6 +164,7 @@ def form_view(request, form):
                         answer_by=request.user
                     )
                     answer.save()
+        # import pdb; pdb.set_trace()
         if len(checks) > 0:
             for i, check in checks.items():
                 question = Question_form.objects.get(question_id=i)
@@ -175,9 +178,12 @@ def form_view(request, form):
                 answer.save()
         question = Question_form.objects.get(question_id=1)
         forms = Form_type.objects.all()
-        return render(request, 'landing/forms_list.html', {'forms': forms})
+        form_image.save(last_form)
+        return redirect('form_list')
+        # return render(request, 'landing/forms_list.html', {'forms': forms})
     form_questions = Question_form.objects.filter(form_type__form_id=form)
     questions = []
+    form_image = ImageForm()
     for qst in form_questions:
         options_list = qst.options.split(';') if qst.options else []
         questions.append({
@@ -191,13 +197,17 @@ def form_view(request, form):
         })
     return render(request, 'landing/forms_list.html', {
         'questions': questions,
-        'form': form_questions[0].form_type
+        'form': form_questions[0].form_type,
+        'image_form': form_image
     })
 
 def form_answers(request, form):
     answers = answer_form.objects.filter(form_id=form)
+    evidence = image_evidence.objects.get(form_id=form)
+    # import pdb; pdb.set_trace()
     return render(request, 'landing/forms_list.html', {
         'answers': answers,
+        'evidence': evidence,
         'date': answers[0].created,
         'form_type': answers[0].form_type.form_name,
         'applied': answers[0].answer_by

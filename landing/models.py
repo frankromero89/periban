@@ -63,9 +63,9 @@ class answer_form(models.Model):
 
 class image_evidence(models.Model):
     id = models.AutoField(primary_key=True)
-    form_id = models.ForeignKey(answer_form, on_delete=models.CASCADE)
-    image_evidence = models.ImageField(upload_to='landing/images/evidence')
+    form_id = form_id = models.IntegerField(default=1)
+    image_evidence = models.ImageField(upload_to='landing/images/evidence', null=True)
     created = models.DateTimeField(default= timezone.now)
 
-    def __str__(self):
-        return self.id
+    class Meta:
+        ordering = ('-id',)

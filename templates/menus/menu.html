@@ -20,7 +20,9 @@
                                 <p class="gobold name-menu-platillo">{{platillo.name}}</p>
                                 <a href="{% url 'platillos' name=platillo.url_name %}" class="price-food d-flex justify-content-around align-items-center">
                                     <p class="mb-0">DESCRIPCIÓN</p>
-                                    <p class="mb-0 price">$ {{platillo.costo}}</p>
+                                    {% if platillo.costo > 1%}
+                                        <p class="mb-0 price">$ {{platillo.costo}}</p>
+                                    {% endif %}    
                                 </a>
                             </div>
                         </div>

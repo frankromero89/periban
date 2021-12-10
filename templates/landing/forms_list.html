@@ -16,7 +16,7 @@
                         {% endfor %}
                     </ul>
                     {% endif %}
-                    {% if forms_answers %}
+                    {% if forms_answers and user.is_staff%}
                         <div class="answers_container mt-4">
                             <h1 class="gobold">Registros cuestionarios</h1>
                             <ul>
@@ -45,10 +45,12 @@
                                 </li>
                             {% endfor %}
                         </ul>
+                        <p class="gobold">Evidencia</p>
+                        <img src="{{ evidence.image_evidence.url }}" alt="">
                     {% endif %}
                     {% if questions %}
                         <div class="form-staff">
-                            <form method="post" action="{% url 'form' form=form.form_id%}">
+                            <form method="post" action="{% url 'form' form=form.form_id%}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% for question in questions %}
                                     {% if question.is_options %}
@@ -86,10 +88,11 @@
                                         </div>
                                     {% endif %}
                                 {% endfor %}
-                                <div class="input-container element-form">
+                                <!-- <div class="input-container element-form">
                                     <label for="inputEvidenceImage" class="form-label">Evidencia</label>
                                     <input type="file" name="imageEvidence" class="form-control" id="inputEvidenceImage" aria-describedby="evidence" required="true">
-                                </div>
+                                </div> -->
+                                {{image_form}}
                                 <div class="d-flex justify-content-center align-items-center mt-4">
                                     <button type="submit" class="btn send-form-event">Enviar</button>
                                 </div>
