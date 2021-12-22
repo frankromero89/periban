@@ -709,9 +709,13 @@ a .title-food .subtitle-menu{
     .container-branches{
         width: 90%;
     }
+    .restaurant-branches{
+        justify-content: center;
+    }
     .restaurant-branches .branch{
-        width: 40%;
+        width: 80%;
         margin: 1rem 5%;
+        text-align: center;
     }
     .footer{
         justify-content: space-evenly;
@@ -750,7 +754,7 @@ a .title-food .subtitle-menu{
         margin: .5rem;
     }
     .container-food{
-        width: 40%;
+        width: 100%;
     }
     .container-shipment-options{
         width: 80%;
@@ -970,7 +974,8 @@ a .title-food .subtitle-menu{
     }
     .container-platilo{
         flex-direction: column;
-        height: 700px;
+        height: auto;
+        margin-bottom: 2rem;
     }
     .image-platillo{
         width: 100%;
