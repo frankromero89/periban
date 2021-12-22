@@ -13,6 +13,8 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="{% static 'js/global.js' %}"></script>  
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&key=AIzaSyCAt2eohgh9IlCEswyXWY4EhNAn-o95LBA&libraries=places"></script>
+    {% block javascript %}
+    {% endblock %}
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>

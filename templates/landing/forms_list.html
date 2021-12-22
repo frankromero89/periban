@@ -21,9 +21,9 @@
                             <h1 class="gobold">Registros cuestionarios</h1>
                             <ul>
                                 {% for form_ans in forms_answers %}
-                                <a class="item-form-list gobold" href="{% url 'form_answers' form=form_ans.form_type__form_id %}">
-                                    <li>{{form_ans.created}} - {{form_ans.form_type__form_name}}</li>
-                                </a>
+                                    <a class="item-form-list gobold" href="{% url 'form_answers' form=form_ans.form_type__form_id %}">
+                                        <li>{{form_ans.created}} - {{form_ans.form_type__form_name}}</li>
+                                    </a>
                                 {% endfor %}
                             </ul>
                         </div>
@@ -37,19 +37,24 @@
                         </div>
                         <ul class="mt-4 list-answers">
                             {% for answer in answers %}
-                                <li>
-                                    <div>
-                                        <p><strong>{{answer.question_id.question_description}}</strong></p>
-                                        <p style="margin-left:1rem;">{{answer.answer}}</p>
-                                    </div>
-                                </li>
+                                {% if answer.question_id.question_description != 'location' %}
+                                    <li>
+                                        <div>
+                                            <p><strong>{{answer.question_id.question_description}}</strong></p>
+                                            <p style="margin-left:1rem;">{{answer.answer}}</p>
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <p><strong>{{answer.question_id.question_description}}</strong></p>
+                                    <div id="mapEvidence" class="map-evidence" meta="{{answer.answer}}"></div>
+                                {% endif %}
                             {% endfor %}
                         </ul>
                         <p class="gobold">Evidencia</p>
                         <img src="{{ evidence.image_evidence.url }}" alt="">
                     {% endif %}
                     {% if questions %}
-                        <div class="form-staff">
+                        <div id="form-staff" class="form-staff">
                             <form method="post" action="{% url 'form' form=form.form_id%}" enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% for question in questions %}
@@ -82,19 +87,19 @@
                                         </div>
                                     </fieldset>
                                     {% else %}
-                                        <div class="input-container element-form">
-                                            <label for="exampleInputEmail1" class="form-label">{{question.label}}</label>
-                                            <input type="text" name="{{question.id}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                                        </div>
+                                        {%if question.label == 'location' %}
+                                            <input type="text" name="{{question.id}}" class="form-control visually-hidden" id="inputLocation" aria-describedby="evidence" required="true">
+                                        {% else %}
+                                            <div class="input-container element-form">
+                                                <label for="exampleInputEmail1" class="form-label">{{question.label}}</label>
+                                                <input type="text" name="{{question.id}}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                            </div>
+                                        {% endif %}
                                     {% endif %}
                                 {% endfor %}
-                                <!-- <div class="input-container element-form">
-                                    <label for="inputEvidenceImage" class="form-label">Evidencia</label>
-                                    <input type="file" name="imageEvidence" class="form-control" id="inputEvidenceImage" aria-describedby="evidence" required="true">
-                                </div> -->
                                 {{image_form}}
                                 <div class="d-flex justify-content-center align-items-center mt-4">
-                                    <button type="submit" class="btn send-form-event">Enviar</button>
+                                    <button id="submit-form-staff" type="submit" class="btn send-form-event">Enviar</button>
                                 </div>
                             </form>
                         </div>

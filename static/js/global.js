@@ -1,14 +1,34 @@
-$(document).ready(function() {
+$(document).ready(async function() {
     const input = document.getElementById("form-places");
     const loader = document.getElementsByClassName("spinner-loading");
-    var alertPlaceholder = document.getElementById('liveAlertPlaceholder')
+    var alertPlaceholder = document.getElementById('liveAlertPlaceholder');
+    var containerMap = document.getElementById('mapEvidence');
+
+    if (document.body.contains(document.getElementById('form-staff'))){
+        getCurrentLocation()
+    }
+
+    if(document.body.contains(containerMap)){
+        var locString = containerMap.getAttribute('meta');
+        var locationArray = locString.split(',')
+        var position = { lat: parseFloat(locationArray[0]), lng: parseFloat(locationArray[1]) }
+        var map = new google.maps.Map(document.getElementById("mapEvidence"), {
+            center: position,
+            zoom: 20,
+        });
+        infoWindow = new google.maps.InfoWindow();
+        new google.maps.Marker({
+            position: position,
+            map,
+            title: "Ubicación guardada",
+        });
+    }
+
     const options = {
         componentRestrictions: { country: "mx" },
         fields: ["address_components"],
     }
-    
     const autocomplete = new google.maps.places.Autocomplete(input, options);
-
     autocomplete.addListener("place_changed", function(){
         $(loader).css('display', 'block');
         var place = autocomplete.getPlace();
@@ -102,4 +122,48 @@ function showMenuMobile(){
         e.preventDefault();
         $(menuMobile).removeClass("show-menu");
     })
+}
+
+// const getCurrentLocation = new Promise((resolve, reject) => {
+//     if (navigator.geolocation) {
+//         resolve('yeah')
+//         navigator.geolocation.getCurrentPosition(
+//           resolve((position) => {
+//             const pos = {
+//               lat: position.coords.latitude,
+//               lng: position.coords.longitude,
+//             };
+//             position = pos;
+//           }),
+//           () => {
+//             handleLocationError(true, infoWindow, map.getCenter());
+//           }
+//         );
+//     } else {
+//         // Browser doesn't support Geolocation
+//         handleLocationError(false, infoWindow, map.getCenter());
+//     }
+// });
+
+
+function getCurrentLocation(){
+    var inputLoc = document.getElementById('inputLocation')
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const pos = {
+              lat: position.coords.latitude,
+              lng: position.coords.longitude,
+            };
+            console.log('pos', pos);
+            inputLoc.value = `${pos.lat},${pos.lng}`;
+          },
+          () => {
+            handleLocationError(true, infoWindow, map.getCenter());
+          }
+        );
+    } else {
+        // Browser doesn't support Geolocation
+        handleLocationError(false, infoWindow, map.getCenter());
+    }
 }

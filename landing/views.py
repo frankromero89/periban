@@ -42,36 +42,43 @@ def coverage(request):
         name = 'AJUSCO'
         address = 'Halacho esq. KinchilH. de Padierna,Tlalpan, CDMX'
         tel = '55 8791 3477'
+        email = 'ajusco@elperiban.com'
         tel_link = '525587913477'
     if branch == 'aztecas':
         name = 'AZTECAS'
         address = 'Av. Aztecas 762, Ajusco Coyoacán, cdmx'
         tel = '55 1517 0679'
+        email = 'aztecas@elperiban.com'
         tel_link = '525536523218'
     if branch == 'marina':
         name = 'MARINA'
         address = 'Marina Nac. 240, Anáhuac, Miguel Hidalgo, cdmx'
         tel = '55 6394 2221'
+        email = 'marina@elperiban.com'
         tel_link = '525536523714'
     if branch == 'roma':
         name = 'ROMA'
         address = 'Campeche 171, Col. Roma Sur cdmx'
         tel = '56 3332 1629'
+        email = 'roma@elperiban.com'
         tel_link = '525633321629'
     if branch == 'coapa':
         name = 'COAPA'
         address = 'Av. Prolongación División del Norte 4496 Prado Coapa, Tlalpan, CDMX'
         tel = '55 7259 0035'
+        email = 'coapa@elperiban.com'
         tel_link = '525535569825'
     if branch == 'cafetales':
         name = 'CAFETALES'
         address = 'V. de la Armada 1405 Col. Residencial Cafetales del Coyoacán, CDMX'
         tel = '55 3559 4524'
+        email = 'cafetales@elperiban.com'
         tel_link = '525535594524'
     if branch == 'ayuntamiento':
         name = 'AYUNTAMIENTO'
         address = 'Ayuntamiento 87 Local D, Barrio la Lonja, Tlalpan, CDMX'
         tel = '55 3652 3050'
+        email = 'ayuntamiento@elperiban.com'
         tel_link = '525536523050'
     return render(
         request,
@@ -80,6 +87,7 @@ def coverage(request):
             "name": name,
             "address": address,
             "phone": tel,
+            "email": email,
             "phone_link": tel_link
         }
     )
@@ -147,8 +155,10 @@ def form_view(request, form):
         form_type = Form_type.objects.get(form_id=form)
         last_form = answer_row.form_id + 1 if answer_row else 1
         form_image = ImageForm(request.POST, request.FILES)
-        # import pdb; pdb.set_trace()
         checks = {}
+        ####variables for email###
+        body_email = ''
+        email_destination = ''
         for i, qst_answer in request.POST.items():
             if i != 'csrfmiddlewaretoken' and i != 'imageEvidence' and i != 'form_id':
                 if len(i) > 1:
@@ -164,7 +174,11 @@ def form_view(request, form):
                         answer_by=request.user
                     )
                     answer.save()
-        # import pdb; pdb.set_trace()
+                    if question.question_description == 'Sucursales':
+                        email_destination = f"{answer.answer}@elperiban.com"
+                    body_email = body_email + f"""
+                        - {question.question_description}: {answer.answer}
+                    """
         if len(checks) > 0:
             for i, check in checks.items():
                 question = Question_form.objects.get(question_id=i)
@@ -176,11 +190,20 @@ def form_view(request, form):
                     answer_by=request.user
                 )
                 answer.save()
-        question = Question_form.objects.get(question_id=1)
-        forms = Form_type.objects.all()
+                body_email = body_email + f"""
+                    - {question.question_description}: {answer.answer}
+                """
+        # question = Question_form.objects.get(question_id=1)
+        # forms = Form_type.objects.all()
         form_image.save(last_form)
+
+        """Send email with answers to branch"""
+        subject = 'Respuestas formulario'
+        email_from = settings.EMAIL_HOST_USER
+        send_mail(subject, body_email, email_from, [email_destination], fail_silently=False)
+
         return redirect('form_list')
-        # return render(request, 'landing/forms_list.html', {'forms': forms})
+
     form_questions = Question_form.objects.filter(form_type__form_id=form)
     questions = []
     form_image = ImageForm()

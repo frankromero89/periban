@@ -489,10 +489,13 @@ a .title-food .subtitle-menu{
 }
 .link-prices{
     color: #fff;
-    text-decoration: none;
 }
 .link-prices:hover{
     color: #fff;
+}
+.link-prices img{
+    height: 80px;
+    margin-bottom: 2rem;
 }
 .title-events h1{
     font-size: 12rem;
@@ -632,6 +635,10 @@ a .title-food .subtitle-menu{
 }
 .list-answers{
     margin-left: 1rem;
+}
+
+.map-evidence{
+    height: 300px;
 }
 
 
