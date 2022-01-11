@@ -193,15 +193,11 @@ def form_view(request, form):
                 body_email = body_email + f"""
                     - {question.question_description}: {answer.answer}
                 """
-        # question = Question_form.objects.get(question_id=1)
-        # forms = Form_type.objects.all()
         form_image.save(last_form)
-
         """Send email with answers to branch"""
         subject = 'Respuestas formulario'
         email_from = settings.EMAIL_HOST_USER
         send_mail(subject, body_email, email_from, [email_destination], fail_silently=False)
-
         return redirect('form_list')
 
     form_questions = Question_form.objects.filter(form_type__form_id=form)

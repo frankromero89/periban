@@ -34,10 +34,15 @@ $(document).ready(async function() {
         var place = autocomplete.getPlace();
         var neiborhood = null;
         place.address_components.map(function(element){
-            if ($.inArray("sublocality", element.types) == 1) {
+            if ($.inArray("sublocality", element.types) >= 0) {
                 neiborhood = element.short_name.toLowerCase();
             }
+            if($.inArray("neighborhood", element.types) >= 0) {
+                neiborhood = element.short_name.toLowerCase();
+            }
+
         })
+        console.log(neiborhood)
         searchAddress(neiborhood)
     })
 
@@ -71,6 +76,7 @@ function searchAddress(neiborhood){
         var coapa = data.coapa;
         var ayuntamiento = data.ayuntamiento;
         var marina = data.marina;
+        console.log(marina);
         var roma = data.roma;
 
         if ($.inArray(neiborhood, ajusco) >= 0) {
