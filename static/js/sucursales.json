@@ -129,6 +129,33 @@
         "juárez",
         "nápoles",
         "zona rosa"
+    ],
+    "cafetales": [
+        "campestre churubusco",
+        "paseo tasqueña",
+        "petrolera taxqueña",
+        "colonia avante",
+        "campestre coyoacán",
+        "los sauces",
+        "parque coyoacán",
+        "cipreses",
+        "prado coyoacán",
+        "los cedros",
+        "los robles",
+        "los ciruelos",
+        "girasoles i",
+        "girasoles ii",
+        "girasoles iii",
+        "jardínes de coyoacán",
+        "residencial cafetales",
+        "culhuacan ctm vi",
+        "culhuacan ctm vii",
+        "culhuacan ctm ix a",
+        "culhuacan ctm zona x",
+        "alianza popular revolucionaria",
+        "presidentes ejidales 1era secc.",
+        "presidentes ejidales 2da secc.",
+        "carmen serdán",
+        "stunam"
     ]
-        
 }
