@@ -4,7 +4,7 @@
     <div class="container-fluid principal-container p-0 d-flex justify-content-center align-items-start">
             <div class="facturacion-container">
                 <div class="title-form-facturacion">
-                    <h1 class="gobold yellow">Tienes problemas con tu factura?</h1>
+                    <h1 class="gobold yellow">Datos de facturación</h1>
                 </div>
                 <div class="form-employees">
                     <form method="post" action="{% url 'invoices' %}">
@@ -21,6 +21,30 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-container">
+                                <label for="branchInputInvoice" class="form-label">Rfc</label>
+                                <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
+                            </div>
+                            <div class="input-container">
+                                <label for="branchInputInvoice" class="form-label">Nº de ticket</label>
+                                <input type="number" name="ticketNum" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-container">
+                                <label for="branchInputInvoice" class="form-label">Forma de pago</label>
+                                <!-- <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">     -->
+                                <select class="form-select" name="paymentMethod" aria-label="Forma de pago">
+                                    <option value="efectivo">Efectivo</option>
+                                    <option value="tarjeta">Pago con tarjeta</option>
+                                  </select>
+                            </div>
+                            <div class="input-container">
+                                <label for="branchInputInvoice" class="form-label">Monto del ticket</label>
+                                <input type="number" name="ticketAmount" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp" step=0.01>    
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-container">
                                 <label for="phoneInputInvoice" class="form-label">Teléfono</label>
                                 <input type="tel" name="phoneInvoice" class="form-control" id="phoneInputInvoice" aria-describedby="emailHelp">    
                             </div>
@@ -31,7 +55,7 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-container w-100">
-                                <span class="form-label">Indicanos el problema con tu factura</span>
+                                <span class="form-label">¿Tienes algún comentario adicional?</span>
                                 <textarea class="form-control" name="textInvoice" aria-label="With textarea"></textarea>
                             </div>
                         </div>

@@ -530,8 +530,9 @@ a .title-food .subtitle-menu{
 }
 .form-employees{
     color: #845A2C;
-} 
-.form-employees input{
+}
+.form-employees input,
+.form-employees select{
     border-color: #845A2C;
 }
 

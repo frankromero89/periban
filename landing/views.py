@@ -236,6 +236,10 @@ def invoices(request):
     if request.method == 'POST':
         name = request.POST.get('nameInvoice')
         branch = request.POST.get('branchInvoice')
+        rfc = request.POST.get('rfcInvoice')
+        ticket_num = request.POST.get('ticketNum')
+        payment_method = request.POST.get('paymentMethod')
+        ticket_amount = request.POST.get('ticketAmount')
         phone = request.POST.get('phoneInvoice')
         email = request.POST.get('emailInvoice')
         interests = request.POST.get('textInvoice')
@@ -244,6 +248,10 @@ def invoices(request):
             Una persona indicó que tiene problemas con su facturación sus datos són:
             nombre: {name}
             sucursal: {branch}
+            rfc: {rfc}
+            numero de ticket: {ticket_num}
+            metodo de pago: {payment_method}
+            monto del ticket: {ticket_amount}
             teléfono: {phone}
             correo: {email}
             intereses: {interests}
