@@ -33,10 +33,11 @@ class Form_type(models.Model):
 class Question_form(models.Model):
     """Questions Forms Model"""
     question_id = models.AutoField(primary_key=True)
-    question_description = models.CharField(max_length=100, default="")
+    question_description = models.CharField(max_length=700, default="")
     form_type = models.ForeignKey(Form_type, on_delete=models.CASCADE)
     is_options = models.BooleanField(default=False)
     is_check = models.BooleanField(default=False)
+    is_time = models.BooleanField(default=False)
     options = models.TextField(blank=True, null=True)
     required = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
