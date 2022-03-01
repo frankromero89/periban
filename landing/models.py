@@ -65,7 +65,7 @@ class answer_form(models.Model):
 
 class image_evidence(models.Model):
     id = models.AutoField(primary_key=True)
-    form_id = form_id = models.IntegerField(default=1)
+    form_id = models.IntegerField(default=1)
     image_evidence = models.ImageField(upload_to='landing/images/evidence', null=True)
     created = models.DateTimeField(default= timezone.now)
 
