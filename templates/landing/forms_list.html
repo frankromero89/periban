@@ -21,7 +21,7 @@
                             <h1 class="gobold">Registros cuestionarios</h1>
                             <ul>
                                 {% for form_ans in forms_answers %}
-                                    <a class="item-form-list gobold" href="{% url 'form_answers' form=form_ans.form_type__form_id %}">
+                                    <a class="item-form-list gobold" href="{% url 'form_answers' form=form_ans.form_id %}">
                                         <li>{{form_ans.created}} - {{form_ans.form_type__form_name}}</li>
                                     </a>
                                 {% endfor %}
@@ -88,7 +88,11 @@
                                     </fieldset>
                                     {% else %}
                                         {%if question.label == 'location' %}
-                                            <input type="text" name="{{question.id}}" class="form-control visually-hidden" id="inputLocation" aria-describedby="evidence" required="true">
+                                            <div class="input-container element-form">
+                                                <label for="inputLocation" class="form-label">{{question.label}}</label>
+                                                <input type="text" name="{{question.id}}" class="form-control" id="inputLocation" aria-describedby="evidence" required="true">
+                                                <button id="get-location" class="btn mt-4 send-form-event">Obtener ubicación</button>
+                                            </div>
                                         {% else %}
                                             <div class="input-container element-form">
                                                 <label for="exampleInputEmail1" class="form-label">{{question.label}}</label>
@@ -97,7 +101,9 @@
                                         {% endif %}
                                     {% endif %}
                                 {% endfor %}
-                                {{image_form}}
+                                <div class="input-container element-form">
+                                    {{image_form}}
+                                </div>
                                 <div class="d-flex justify-content-center align-items-center mt-4">
                                     <button id="submit-form-staff" type="submit" class="btn send-form-event">Enviar</button>
                                 </div>

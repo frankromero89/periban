@@ -56,6 +56,7 @@ $(document).ready(async function() {
     });
     actionPig();
     showMenuMobile();
+    buttonLocation();
 });
 
 
@@ -174,4 +175,11 @@ function getCurrentLocation(){
         // Browser doesn't support Geolocation
         handleLocationError(false, infoWindow, map.getCenter());
     }
+}
+
+function buttonLocation(){
+    var buttonLoc = document.getElementById('get-location')
+    $(buttonLoc).click(function() {
+        getCurrentLocation()
+    });   
 }

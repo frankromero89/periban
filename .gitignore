@@ -1,4 +1,5 @@
 db.sqlite3.sql
-landing/migrations
-media/landing/images/evidence
-periban/settings
+landing/migrations/*
+media/landing/images/evidence/*
+periban/settings/*
+db.sqlite3
