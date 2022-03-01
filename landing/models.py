@@ -38,6 +38,7 @@ class Question_form(models.Model):
     is_options = models.BooleanField(default=False)
     is_check = models.BooleanField(default=False)
     is_time = models.BooleanField(default=False)
+    is_picture = models.BooleanField(default=False)
     options = models.TextField(blank=True, null=True)
     required = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
