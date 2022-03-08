@@ -2,7 +2,8 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User
 
-from adminsortable2.admin import SortableAdminMixin, SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminMixin
+from import_export.admin import ExportActionMixin    
 
 from landing.models import Profile as Profile, Form_type, Question_form, answer_form, image_evidence
 
@@ -12,21 +13,16 @@ from landing.models import Profile as Profile, Form_type, Question_form, answer_
 class FormTypeAdmin(admin.ModelAdmin):
     list_display = ('pk', 'form_name')
 
-
-# class QuestionInline(SortableInlineAdminMixin, admin.StackedInline):
-#     model = Question_form
-#     can_delete = False
-#     verbose_name_plural = 'question'
 @admin.register(Question_form)
-class QuestionFormsAdmin(SortableAdminMixin, admin.ModelAdmin):
+class QuestionFormsAdmin(ExportActionMixin, SortableAdminMixin, admin.ModelAdmin):
     list_display = ('question_description', 'form_type', 'is_active')
 
 @admin.register(image_evidence)
-class ImageEvidenceAdmin(SortableAdminMixin, admin.ModelAdmin):
+class ImageEvidenceAdmin(ExportActionMixin, SortableAdminMixin, admin.ModelAdmin):
     list_display = ('form_id', 'image_evidence',)
 
 @admin.register(answer_form)
-class AnswerFormsAdmin(admin.ModelAdmin):
+class AnswerFormsAdmin(ExportActionMixin, admin.ModelAdmin):
     list_display = ('form_id', 'question_id', 'answer')
 
 
