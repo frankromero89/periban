@@ -25,6 +25,7 @@ class Form_type(models.Model):
     form_id = models.AutoField(primary_key=True)
     form_name = models.CharField(max_length=100, default="")
     is_active = models.BooleanField(default=True)
+    total_points_promedy = models.IntegerField(default=0, blank=False, null=False)
 
     def __str__(self):
         return self.form_name
@@ -39,6 +40,7 @@ class Question_form(models.Model):
     is_check = models.BooleanField(default=False)
     is_time = models.BooleanField(default=False)
     is_picture = models.BooleanField(default=False)
+    value_points = models.IntegerField(default=0, blank=False, null=False)
     options = models.TextField(blank=True, null=True)
     required = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
@@ -71,3 +73,11 @@ class image_evidence(models.Model):
 
     class Meta:
         ordering = ('-id',)
+
+class promedy_form(models.Model):
+    form_id = models.IntegerField()
+    promedy_form = models.PositiveIntegerField(default=0, blank=False, null=False)
+    created = models.DateField(default= date.today)
+    def __str__(self):
+        return self.promedy_form
+

@@ -1,14 +1,15 @@
 """Landing views"""
+import pwd
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.core.mail import BadHeaderError, send_mail
 from django.conf import settings
-from typing import List
+from typing import List, cast
 from django.db.models import Count
 
 from landing.forms import ImageForm
-from landing.models import Form_type, Question_form, answer_form, image_evidence
+from landing.models import Form_type, Question_form, answer_form, image_evidence, promedy_form
 
 def home(request):
     return render(request, 'landing/home.html')
@@ -156,16 +157,19 @@ def form_view(request, form):
         last_form = answer_row.form_id + 1 if answer_row else 1
         form_image = ImageForm(request.POST, request.FILES)
         checks = {}
+        total_promedy = 0
         ####variables for email###
         body_email = ''
         email_destination = ''
         for i, qst_answer in request.POST.items():
-            if i != 'csrfmiddlewaretoken' and i != 'imageEvidence' and i != 'form_id':
+            if i != 'csrfmiddlewaretoken' and i != 'imageEvidence' and i != 'form_id': 
                 if len(i) > 1:
                     name_option=i.split("-")
                     checks[name_option[0]] = f'{checks[name_option[0]]};{qst_answer}' if checks.get(name_option[0]) else qst_answer
                 else:
                     question = Question_form.objects.get(question_id=i)
+                    if question.value_points > 0 and cast(str, qst_answer.lower()) == 'si':
+                        total_promedy += question.value_points
                     answer = answer_form(
                         form_id=last_form,
                         form_type=form_type,
@@ -174,11 +178,14 @@ def form_view(request, form):
                         answer_by=request.user
                     )
                     answer.save()
+                    
+                    #Data for email
                     if question.question_description == 'Sucursales':
                         email_destination = f"{answer.answer}@elperiban.com"
                     body_email = body_email + f"""
                         - {question.question_description}: {answer.answer}
                     """
+        print(f'****total promedy: {total_promedy}')
         if len(checks) > 0:
             for i, check in checks.items():
                 question = Question_form.objects.get(question_id=i)
@@ -193,11 +200,17 @@ def form_view(request, form):
                 body_email = body_email + f"""
                     - {question.question_description}: {answer.answer}
                 """
+        if total_promedy > 0:
+            promedy = promedy_form(
+                form_id=last_form,
+                promedy_form= total_promedy
+            )
+            promedy.save()
         form_image.save(last_form)
         """Send email with answers to branch"""
         subject = 'Respuestas formulario'
         email_from = settings.EMAIL_HOST_USER
-        send_mail(subject, body_email, email_from, [email_destination], fail_silently=False)
+        # send_mail(subject, body_email, email_from, [email_destination], fail_silently=False)
         return redirect('form_list')
 
     form_questions = Question_form.objects.filter(form_type__form_id=form)
@@ -223,13 +236,14 @@ def form_view(request, form):
 def form_answers(request, form):
     answers = answer_form.objects.filter(form_id=form)
     evidence = image_evidence.objects.get(form_id=form)
-    # import pdb; pdb.set_trace()
+    promedy = promedy_form.objects.get(form_id=form)
     return render(request, 'landing/forms_list.html', {
         'answers': answers,
         'evidence': evidence,
         'date': answers[0].created,
         'form_type': answers[0].form_type.form_name,
-        'applied': answers[0].answer_by
+        'applied': answers[0].answer_by,
+        'promedy': promedy
     })    
 
 def invoices(request):

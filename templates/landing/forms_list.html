@@ -34,6 +34,9 @@
                             <p class="gobold" style="color: #BF520D;">Fecha: {{date}}</p>
                             <p class="gobold" style="color: #BF520D;">Área: {{form_type}}</p>
                             <p class="gobold" style="color: #BF520D;">Aplicado: {{applied}}</p>
+                            {% if promedy %}
+                                <p class="gobold" style="color: #BF520D;">Promedio: {{promedy.promedy_form}}</p> 
+                            {% endif %}
                         </div>
                         <ul class="mt-4 list-answers">
                             {% for answer in answers %}
