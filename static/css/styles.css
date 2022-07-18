@@ -55,6 +55,12 @@ html {
     margin: 1rem 0;
     font-size: 1.5rem;    
 }
+.mobile-navbar .dropdown .btn{
+    padding-left: 0;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
 
 .title-big{
     font-size: 90px;

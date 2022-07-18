@@ -85,12 +85,14 @@
         <a href="/#tradicion" class="gobold gold mb-0 link-nav link-home-scroll">UNA TRADICIÓN</a>
         <a href="{% url 'menus' %}" class="gobold gold mb-0 link-nav">NUESTRO MENÚ</a>
         <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenus" data-bs-toggle="dropdown" aria-expanded="false">
-              Menús
+            <button class="btn gobold gold dropdown-toggle" type="button" id="dropdownMenus" data-bs-toggle="dropdown" aria-expanded="false">
+                Menús
             </button>
-            <ul class="dropdown-menu" aria-labelledby="dropdownMenus">
-              <li><a class="dropdown-item" href="#">Restaurantes</a></li>
-              <li><a class="dropdown-item" href="#">Taquerías</a></li>
+            <ul class="dropdown-menu bg-black" aria-labelledby="dropdownMenus">
+                <li><a class="dropdown-item gobold gold" href="{% url 'menus' %}">Restaurantes</a></li>
+                <li><a class="dropdown-item gobold gold" href="{% static 'pdf/carta_taquerias.pdf' %}" target="_blank">
+                    Taquerías
+                </a></li>
             </ul>
         </div>
         <a href="/#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
