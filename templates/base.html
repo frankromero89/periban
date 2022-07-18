@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El periban</title>
+    <title>Carnitas El periban</title>
     <link rel="icon" type="image/x-icon" href="{% static 'favicon.ico' %}">
     <meta name="description" content="Página del restraurante el periban">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
@@ -41,7 +41,17 @@
             <div class="row w-100 h-100">
                 <div class="d-flex justify-content-md-around align-items-center col-5 h-100">
                     <a href="/#tradicion" class="gobold gold mb-0 link-nav link-home-scroll">UNA TRADICIÓN</a>
-                    <a href="{% url 'menus' %}" class="gobold gold mb-0 link-nav">NUESTRO MENÚ</a>
+                    <div class="dropdown">
+                        <button class="btn gobold gold dropdown-toggle" type="button" id="dropdownMenus" data-bs-toggle="dropdown" aria-expanded="false">
+                          Menús
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenus">
+                            <li><a class="dropdown-item gobold gold" href="{% url 'menus' %}">Restaurantes</a></li>
+                            <li><a class="dropdown-item gobold gold" href="{% static 'pdf/carta_taquerias.pdf' %}" target="_blank">
+                                Taquerías
+                            </a></li>
+                        </ul>
+                    </div>
                     <a href="/#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
                 </div>
                 <div class="col-2 h-100">
@@ -74,6 +84,15 @@
         </div>
         <a href="/#tradicion" class="gobold gold mb-0 link-nav link-home-scroll">UNA TRADICIÓN</a>
         <a href="{% url 'menus' %}" class="gobold gold mb-0 link-nav">NUESTRO MENÚ</a>
+        <div class="dropdown">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenus" data-bs-toggle="dropdown" aria-expanded="false">
+              Menús
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenus">
+              <li><a class="dropdown-item" href="#">Restaurantes</a></li>
+              <li><a class="dropdown-item" href="#">Taquerías</a></li>
+            </ul>
+        </div>
         <a href="/#branches" class="gobold gold mb-0 link-nav link-home-scroll">SUCURSALES</a>
         <a href="{% url 'shipment' %}" class="gobold gold mb-0 link-nav">SERVICIO A DOMICILIO</a>
         <a href="{% url 'events' %}" class="gobold gold mb-0 link-nav">EVENTOS</a>
