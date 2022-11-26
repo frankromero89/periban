@@ -55,6 +55,12 @@ html {
     margin: 1rem 0;
     font-size: 1.5rem;    
 }
+.mobile-navbar .dropdown .btn{
+    padding-left: 0;
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
 
 .title-big{
     font-size: 90px;
@@ -416,8 +422,9 @@ a .title-food .subtitle-menu{
 .container-addresses .branch .wa-tel{
     width: 20%;
     display: flex;
-    justify-content: end;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
     font-size: 1.5rem;
 }
 .wa-tel img{
@@ -489,10 +496,13 @@ a .title-food .subtitle-menu{
 }
 .link-prices{
     color: #fff;
-    text-decoration: none;
 }
 .link-prices:hover{
     color: #fff;
+}
+.link-prices img{
+    height: 80px;
+    margin-bottom: 2rem;
 }
 .title-events h1{
     font-size: 12rem;
@@ -511,7 +521,12 @@ a .title-food .subtitle-menu{
     background-color: #D19950;
     color: #fff;
 }
+.title-form-employees,
+.title-form-facturacion{
+    text-align: center;
+}
 
+/*****EMPLOYEES VIEW*****/
 .container-global-employees{
     width: 100%;
     display: flex;
@@ -521,16 +536,27 @@ a .title-food .subtitle-menu{
 .title-employees{
     padding: 2rem 0;
 }
-.title-form-employees,
-.title-form-facturacion{
-    text-align: center;
-}
 .form-employees{
     color: #845A2C;
-} 
-.form-employees input{
+}
+.form-employees input,
+.form-employees select{
     border-color: #845A2C;
 }
+.form-employees .rh-tel {
+    align-items: center;
+}
+.form-employees .rh-tel .wh-logo-rh{
+    height: 3rem;
+}
+.form-employees .rh-tel a{
+    text-decoration: none;
+    color: #845A2C;
+}
+.form-employees .rh-tel p{
+    margin-right: 1rem;
+}
+
 
 .principal-container.medios{
     margin-bottom: 200px;
@@ -566,9 +592,38 @@ a .title-food .subtitle-menu{
 .container-slider-medios .carousel-control-next{
     right: -15%;
 }
+.ancla-banner{
+    height: 100%;
+    width: 100%;
+}
+
+/********INVOICES VIEW***********/
 .facturacion-container{
     padding: 2rem 0;
 }
+.subtitle-invoices{
+    font-size: 1.5rem;
+    color: #845A2C;
+}
+
+.ticket-img input[type=file]{
+    background-color: red;
+}
+
+/* .ticket-img input[type=file], */
+.ticket-img .custom-file-upload label{
+    display: none;
+}
+
+.ticket-img .custom-file-upload{
+    background-color: #D19950;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
 .privacityNotice-container{
     padding: 2rem;
 }
@@ -595,6 +650,47 @@ a .title-food .subtitle-menu{
 }
 .options-input{
     margin-left: .5rem;
+}
+.login-form-container{
+    width: 40%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -80%);
+    text-align: center;
+    color: #fff;
+    background-color: #000;
+    padding: 1rem;
+}
+.login-inputs{
+    margin-top: 2rem;
+}
+.login-inputs .input-container{
+    margin-top: 1rem;
+}
+.submit-container-login{
+    margin-top: 2rem;
+}
+.error-login{
+    margin-top: 1rem;
+}
+.btn-back{
+    font-size: 1.5rem;
+    color: #000;
+    text-decoration: none;
+}
+.btn-back:hover{
+    color: black;
+}
+.info-form{
+    margin-top: 2rem;
+}
+.list-answers{
+    margin-left: 1rem;
+}
+
+.map-evidence{
+    height: 300px;
 }
 
 
@@ -665,9 +761,13 @@ a .title-food .subtitle-menu{
     .container-branches{
         width: 90%;
     }
+    .restaurant-branches{
+        justify-content: center;
+    }
     .restaurant-branches .branch{
-        width: 40%;
+        width: 80%;
         margin: 1rem 5%;
+        text-align: center;
     }
     .footer{
         justify-content: space-evenly;
@@ -706,7 +806,7 @@ a .title-food .subtitle-menu{
         margin: .5rem;
     }
     .container-food{
-        width: 40%;
+        width: 100%;
     }
     .container-shipment-options{
         width: 80%;
@@ -837,6 +937,9 @@ a .title-food .subtitle-menu{
     .form-staff{
         width:100%;
     }
+    .login-form-container{
+        width: 85%;
+    }
 }
 
 /* Mobile  */
@@ -923,7 +1026,8 @@ a .title-food .subtitle-menu{
     }
     .container-platilo{
         flex-direction: column;
-        height: 700px;
+        height: auto;
+        margin-bottom: 2rem;
     }
     .image-platillo{
         width: 100%;
