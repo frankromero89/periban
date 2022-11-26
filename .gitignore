@@ -1,4 +1,8 @@
 db.sqlite3.sql
 landing/migrations/*
 media/landing/images/evidence/*
+media/landing/images/ticket_evidence/*
 db.sqlite3
+.venv
+.vscode
+.DS_Store

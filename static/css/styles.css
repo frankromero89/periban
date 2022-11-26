@@ -521,7 +521,12 @@ a .title-food .subtitle-menu{
     background-color: #D19950;
     color: #fff;
 }
+.title-form-employees,
+.title-form-facturacion{
+    text-align: center;
+}
 
+/*****EMPLOYEES VIEW*****/
 .container-global-employees{
     width: 100%;
     display: flex;
@@ -531,10 +536,6 @@ a .title-food .subtitle-menu{
 .title-employees{
     padding: 2rem 0;
 }
-.title-form-employees,
-.title-form-facturacion{
-    text-align: center;
-}
 .form-employees{
     color: #845A2C;
 }
@@ -542,6 +543,20 @@ a .title-food .subtitle-menu{
 .form-employees select{
     border-color: #845A2C;
 }
+.form-employees .rh-tel {
+    align-items: center;
+}
+.form-employees .rh-tel .wh-logo-rh{
+    height: 3rem;
+}
+.form-employees .rh-tel a{
+    text-decoration: none;
+    color: #845A2C;
+}
+.form-employees .rh-tel p{
+    margin-right: 1rem;
+}
+
 
 .principal-container.medios{
     margin-bottom: 200px;
@@ -581,9 +596,34 @@ a .title-food .subtitle-menu{
     height: 100%;
     width: 100%;
 }
+
+/********INVOICES VIEW***********/
 .facturacion-container{
     padding: 2rem 0;
 }
+.subtitle-invoices{
+    font-size: 1.5rem;
+    color: #845A2C;
+}
+
+.ticket-img input[type=file]{
+    background-color: red;
+}
+
+/* .ticket-img input[type=file], */
+.ticket-img .custom-file-upload label{
+    display: none;
+}
+
+.ticket-img .custom-file-upload{
+    background-color: #D19950;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+
 .privacityNotice-container{
     padding: 2rem;
 }

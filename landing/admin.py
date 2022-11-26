@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from adminsortable2.admin import SortableAdminMixin
 from import_export.admin import ExportActionMixin    
 
-from landing.models import Profile as Profile, Form_type, Question_form, answer_form, image_evidence, promedy_form
+from landing.models import Profile as Profile, Form_type, Question_form, answer_form, image_evidence, promedy_form, ticket_image_evidence
 
 
 # Register your models here.
@@ -34,6 +34,9 @@ class ProfileAdmin(admin.ModelAdmin):
     list_display = ('pk', 'user', 'role')
     list_editable = ('role',)
 
+@admin.register(ticket_image_evidence)
+class TicketImageEvidenceAdmin(admin.ModelAdmin):
+    list_display = ('client_name', 'ticket_image')
 
 class ProfileInline(admin.StackedInline):
     model = Profile

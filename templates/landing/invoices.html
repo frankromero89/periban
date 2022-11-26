@@ -4,19 +4,35 @@
     <div class="container-fluid principal-container p-0 d-flex justify-content-center align-items-start">
             <div class="facturacion-container">
                 <div class="title-form-facturacion">
-                    <h1 class="gobold yellow">Datos de facturación</h1>
+                    <h1 class="gobold yellow">Aclaraciones de facturación</h1>
+                </div>
+                <div class="gobold">
+                    <p class="subtitle-invoices">¿No te llega tu factura? Escríbenos</p> 
                 </div>
                 <div class="form-employees">
-                    <form method="post" action="{% url 'invoices' %}">
+                    <form method="post" action="{% url 'invoices' %}" enctype="multipart/form-data">
                         {% csrf_token %}
                         <div class="input-group mb-3">
                             <div class="input-container">
                                 <label for="nameInputInvoice" class="form-label">Nombre Completo</label>
                                 <input type="text" name="nameInvoice" class="form-control" id="nameInputInvoice" aria-describedby="emailHelp">    
                             </div>
-                            <div class="input-container">
+                            <!-- <div class="input-container">
                                 <label for="branchInputInvoice" class="form-label">Sucursal</label>
                                 <input type="text" name="branchInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
+                            </div> -->
+                            <div class="input-container">
+                                <label for="branchInputInvoice" class="form-label">Sucursal</label>
+                                <!-- <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">     -->
+                                <select class="form-select" name="branchInvoice" aria-label="Sucursal">
+                                    <option value="ajusco">Ajusco</option>
+                                    <option value="aztecas">Aztecas</option>
+                                    <option value="marina">Marina</option>
+                                    <option value="roma">Roma</option>
+                                    <option value="coapa">Coapa</option>
+                                    <option value="cafetales">Cafetales</option>
+                                    <option value="ayuntamiento">Ayuntamiento</option>
+                                  </select>
                             </div>
                         </div>
                         <div class="input-group mb-3">
@@ -57,6 +73,14 @@
                             <div class="input-container w-100">
                                 <span class="form-label">¿Tienes algún comentario adicional?</span>
                                 <textarea class="form-control" name="textInvoice" aria-label="With textarea"></textarea>
+                            </div>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-container w-100">
+                                <div class="mb-3">
+                                    <label for="id_ticket_image" class="form-label">Selecciona foto de tu ticket</label>
+                                    <input name="ticket_image" class="form-control" accept="image/*" required type="file" id="id_ticket_image">
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-center align-items-center">

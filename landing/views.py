@@ -8,7 +8,7 @@ from django.conf import settings
 from typing import List, cast
 from django.db.models import Count
 
-from landing.forms import ImageForm
+from landing.forms import ImageForm, ImageTicketForm
 from landing.models import Form_type, Question_form, answer_form, image_evidence, promedy_form
 
 def home(request):
@@ -122,14 +122,12 @@ def employees(request):
         name = request.POST.get('nameEmployee')
         last_name = request.POST.get('lastNameEmployee')
         phone = request.POST.get('phoneEmployee')
-        email = request.POST.get('emailEmployee')
-        interests = request.POST.get('employeeText')
+        interests = request.POST.get('vacancy')
         subject = 'Formulario de empleo'
         message = f"""
             Una persona lleno el formulario de bolsa de trabajo:
             nombre: {name} {last_name}
             teléfono: {phone}
-            correo: {email}
             intereses: {interests}
         """
         email_from = settings.EMAIL_HOST_USER
@@ -248,6 +246,9 @@ def form_answers(request, form):
 
 def invoices(request):
     if request.method == 'POST':
+        ticket_image = ImageTicketForm(request.POST, request.FILES)
+        if not ticket_image.is_valid():
+            print(f"***errors: {ticket_image.errors}")
         name = request.POST.get('nameInvoice')
         branch = request.POST.get('branchInvoice')
         rfc = request.POST.get('rfcInvoice')
@@ -271,7 +272,8 @@ def invoices(request):
             intereses: {interests}
         """
         email_from = settings.EMAIL_HOST_USER
-        send_mail(subject, message, email_from, ['mesadecontrol@elperiban.com'], fail_silently=False)
+        send_mail(subject, message, email_from, [f'{branch}@elperiban.com'], fail_silently=False)
+        ticket_image.save(request.POST.get('nameInvoice'))
     return render(request, 'landing/invoices.html')
 
 def privacy_notice(request):
