@@ -273,7 +273,7 @@ def invoices(request):
         """
         email_from = settings.EMAIL_HOST_USER
         branch_email = f'{branch}@elperiban.com'
-        admin_email = f'{branch}.periban@elperiban.com' if branch != 'marina' else f'{branch}240.periban@elperiban.com' 
+        admin_email = f'{branch}.periban@gmail.com' if branch != 'marina' else f'{branch}240.periban@gmail.com' 
         send_mail(subject, message, email_from, [branch_email, admin_email], fail_silently=False)
         ticket_image.save(request.POST.get('nameInvoice'))
     return render(request, 'landing/invoices.html')
