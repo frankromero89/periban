@@ -1085,3 +1085,17 @@ a .title-food .subtitle-menu{
 .white2{
     color: #F9F4EA;
 }
+.countdown-timer{
+    top: 10%;
+    left: 50%;
+    display: flex;
+    flex-direction: row;
+    transform: translateX(-15%);
+}
+.countdown-timer div{
+    margin-right: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
