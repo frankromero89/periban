@@ -1099,3 +1099,9 @@ a .title-food .subtitle-menu{
     flex-direction: column;
     align-items: center;
 }
+
+@media screen and (max-width: 576px) {
+    .countdown-timer{
+        transform: translateX(-40%);
+    }
+}
