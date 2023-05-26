@@ -195,6 +195,14 @@ a .title-food .subtitle-menu{
     max-height: 550px;
     max-width: 792px;
 }
+
+.especiales-img{
+    width: 100%;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);    
+}
+
 #sliderBranches{
     height: 500px;
 }
