@@ -280,3 +280,25 @@ def invoices(request):
 
 def privacy_notice(request):
     return render(request, 'landing/terms_conditions.html')
+
+def presentation_card_01(request, user_id):
+    users = {
+        "1": {
+            "name": "Miriam",
+            "last_name": "Baldovinos",
+            "position": "Dirección Administrativa",
+            "email": "miriam@elperiban.com",
+            "phone": "55 4343 3165",
+            "waphone": "5543433165"
+        },
+        "2": {
+            "name": "Norma Rosales",
+            "last_name": "Rosales",
+            "position": "Gerente de Marketing",
+            "email": "mkt@elperiban.com",
+            "phone": "56 1205 44 08",
+            "waphone": "525612054408"
+        }
+    }
+    user_data = users.get(user_id, None)
+    return render(request, 'landing/pres_card.html', {'user_data': user_data})

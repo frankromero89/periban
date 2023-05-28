@@ -112,7 +112,9 @@
         {% block container%}
         {% endblock %}
     </div>
-    <img src="{% static 'img/chat.png' %}" id="pig-chat" class="position-fixed pig-chat" alt="">
+    {% if 'tarjeta_p' not in request.path %}
+        <img src="{% static 'img/chat.png' %}" id="pig-chat" class="position-fixed pig-chat" alt="">
+    {% endif %}
     <div class="container-fluid footer">
         <div class="social-media">
             <div class="link d-flex justify-content-center algn-align-items-center">
@@ -134,6 +136,9 @@
             <a class="gobold" href="{% url 'form_list' %}">STAFF</a>
         </div>
     </div>
+    
+    {% if 'tarjeta_p' not in request.path %}
     <script src="//code.tidio.co/p8i8de4i3jghei03xgvfjy6ucnwvnk8h.js" async></script>
+    {% endif %}
 </body>
 </html>

@@ -23,6 +23,7 @@ from menus import views as menu_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('tarjeta_p/<str:user_id>/', landing_views.presentation_card_01, name='pc_01'),
     path('', landing_views.home, name='home'),
     path('menu/', menu_views.menus, name="menus"),
     path('menu/<str:menu_name>/', menu_views.menu, name="menu"),

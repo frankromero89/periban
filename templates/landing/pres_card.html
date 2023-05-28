@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+    <div class="wraper-presentation-cards">
+        {% if user_data %}
+        <div class="container_presentation_card">
+            <img class="logo-pc" src="{% static 'img/logo_presentation_card.png' %}" alt="">
+            <div class="container-name white">
+                <p class="name-pc">{{ user_data.name }}</p>
+                <p class="name-pc">{{ user_data.last_name }}</p>
+                <p class="position-pc">{{ user_data.position }}</p>
+            </div>
+            <div class="container-contact-data">
+                <div class="contact-data">
+                    <img class="icon-pc" src="{% static 'img/icon-email.png' %}" alt="">
+                    <a href="mailto: {{ user_data.email }}" class="contact-data-copy">{{ user_data.email }}</p>
+                    
+                </div>
+                <div class="contact-data">
+                    <img class="icon-pc" src="{% static 'img/icon-phone.png'%}" alt="">
+                    <a href="https://wa.me/52{{ user_data.waphone }}"  target="_blank" class="contact-data-copy">{{ user_data.phone }}</a>
+                </div>
+            </div>
+        </div>
+        <a class="url-pres-card-anchor" href="{% url 'home' %}">
+            <p class="url-pres-card white2">www.<b>elperiban</b>.com</p>
+        </a>
+
+        {% endif %}
+    </div>
+{% endblock %}  
