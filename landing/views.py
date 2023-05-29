@@ -292,7 +292,7 @@ def presentation_card_01(request, user_id):
             "waphone": "5543433165"
         },
         "2": {
-            "name": "Norma Rosales",
+            "name": "Norma",
             "last_name": "Rosales",
             "position": "Gerente de Marketing",
             "email": "mkt@elperiban.com",
