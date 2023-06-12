@@ -117,7 +117,7 @@ html {
 }
 .restaurant-branches .branch{
     width: 22%;
-    margin: 0 1%;
+    margin: 1rem 1%;
 }
 .restaurant-branches .branch .branch-address,
 .restaurant-branches .branch .wa-tel{
