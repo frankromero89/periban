@@ -42,7 +42,6 @@ $(document).ready(async function() {
             }
 
         })
-        console.log(neiborhood)
         searchAddress(neiborhood)
     })
 
@@ -71,6 +70,7 @@ function alert(message, type) {
 }
 
 function searchAddress(neiborhood){
+    console.log(neiborhood)
     const loader = document.getElementsByClassName("spinner-loading");
     $.getJSON('../static/js/sucursales.json',function(data){
         var ajusco = data.ajusco;
@@ -80,6 +80,9 @@ function searchAddress(neiborhood){
         var marina = data.marina;
         var roma = data.roma;
         var cafetales = data.cafetales;
+        var revolucion = data.revolucion;
+
+        console.log(data)
 
         if ($.inArray(neiborhood, ajusco) >= 0) {
             window.location.replace(window.location.origin + "/cobertura?sucursal=ajusco")
@@ -95,6 +98,8 @@ function searchAddress(neiborhood){
             window.location.replace(window.location.origin + "/cobertura?sucursal=roma")
         }else if ($.inArray(neiborhood, cafetales) >= 0) {
             window.location.replace(window.location.origin + "/cobertura?sucursal=cafetales")
+        }else if ($.inArray(neiborhood, revolucion) >= 0) {
+            window.location.replace(window.location.origin + "/cobertura?sucursal=revolucion")
         }else {
             alert('Lo sentimos por el momento no tenemos cobertura en esa dirección, haz tu pedido y recoge en sucursal.', 'warning')
             $(loader).css('display', 'none');

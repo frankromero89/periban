@@ -39,6 +39,7 @@ def branches(request):
 
 def coverage(request):
     branch = request.GET.get('sucursal')
+    print(f"********branch: {branch}")
     if branch == 'ajusco':
         name = 'AJUSCO'
         address = 'Halacho esq. KinchilH. de Padierna,Tlalpan, CDMX'
@@ -81,6 +82,12 @@ def coverage(request):
         tel = '55 3652 3050'
         email = 'ayuntamiento@elperiban.com'
         tel_link = '525536523050'
+    if branch == 'revolucion':
+        name = 'REVOLUCIÓN'
+        address = 'Av. revolución 1351-Local C, Campestre, Álvaro Obregón, CDMX'
+        tel = '55 4957 7347'
+        email = 'revolucion@elperiban.com'
+        tel_link = '525549577347'
     return render(
         request,
         'landing/coverage.html',
