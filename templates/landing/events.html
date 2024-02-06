@@ -2,7 +2,12 @@
 {% load static %}
 {% block container %}
     <div class="container-fluid principal-container events-container p-0 d-flex flex-column align-items-center">
-        <div class="event-form-container">
+        <div class="video-event-container">
+            <video class="video-events" autoplay="autoplay" muted controls>
+                <source src="{% static 'videos/eventos_video.mp4' %}" type=video/mp4>    
+            </video>
+        </div>
+        <div class="event-form-container">  
             <div class="title-events">
                 <h1 class="disp-font yellow">Cotiza tu evento</h1>
                 <a class="link-prices gobold mr-4" href="{% static 'pdf/precios_eventos.pdf'%}" target="_blank"><img src="{% static 'img/btn-download.png' %}" alt=""></a>

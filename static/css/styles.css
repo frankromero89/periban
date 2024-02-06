@@ -217,9 +217,14 @@ a .title-food .subtitle-menu{
     bottom: 5%;
     z-index: 9999999999;
 }
-
+.video-event-container{
+    width: 100%;
+}
 .video-trad-container{
     width: 70%;
+}
+.video-events{
+    width: 100%;
 }
 .video-tradition{
     width: 100%;
@@ -488,13 +493,14 @@ a .title-food .subtitle-menu{
 }
 
 .events-container{
-    background-image: url(../img/background_event.png);
+    /* background-image: url(../img/background_event.png);
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; */
+    background-color: #020e30;
     position: relative;
 }
 .event-form-container{
-    margin-top: 80vh;
+    /* margin-top: 80vh; */
     width: 100%;
     display: flex;
 }
@@ -1020,9 +1026,9 @@ a .title-food .subtitle-menu{
         left: 15.7%;
         width: 69.7%;
     }
-    .events-container{
+    /* .events-container{
         background-image: url(../img/background-event-mob.png);
-    }
+    } */
     .form-staff{
         width:100%;
     }
@@ -1088,9 +1094,9 @@ a .title-food .subtitle-menu{
     .title-medios h1{
         font-size: 6rem;
     }
-    .event-form-container{
+    /* .event-form-container{
         margin-top: 55vh;
-    }
+    } */
     .title-events h1{
         font-size: 6rem;
     }
