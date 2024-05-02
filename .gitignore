@@ -5,4 +5,5 @@ media/landing/images/ticket_evidence/*
 db.sqlite3
 .venv
 .vscode
+*.pyc
 .DS_Store
