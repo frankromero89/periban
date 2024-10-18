@@ -113,7 +113,9 @@
         {% endblock %}
     </div>
     {% if 'tarjeta_p' not in request.path %}
-        <img src="{% static 'img/chat.png' %}" id="pig-chat" class="position-fixed pig-chat" alt="">
+        {% if 'links' not in request.path %}
+            <img src="{% static 'img/chat.png' %}" id="pig-chat" class="position-fixed pig-chat" alt="">
+        {% endif %}
     {% endif %}
     <div class="container-fluid footer">
         <div class="social-media">
@@ -142,7 +144,9 @@
     </div>
     
     {% if 'tarjeta_p' not in request.path %}
-    <script src="//code.tidio.co/p8i8de4i3jghei03xgvfjy6ucnwvnk8h.js" async></script>
+        {% if 'links' not in request.path %}
+            <script src="//code.tidio.co/p8i8de4i3jghei03xgvfjy6ucnwvnk8h.js" async></script>
+        {% endif %}        
     {% endif %}
 </body>
 </html>

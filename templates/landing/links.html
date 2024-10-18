@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+<!-- {% load static %} -->
+{% block container %}
+    <div class="wraper-link-three">
+        <img class="logo-links" src="{% static 'img/logo_presentation_card.png' %}" alt="">
+
+        <div class="container-links">
+            <div class="container-link">
+                <a href="{% url 'home' %}" class="link">Nuestro sitio web</a>
+            </div>
+
+            <div class="container-link">
+                <a href="https://facebook.com/elperiban" class="link">Facebook</a>
+            </div>
+            <div class="container-link">
+                <a href="https://instagram.com/elperiban" class="link">Instagram</a>
+            </div>
+            <div class="container-link">
+                <a href="https://tiktok.com/@el_periban" class="link">Tik Tok</a>
+            </div>
+            <div class="container-link">
+                <a href="https://wa.me/525612054408" class="link">Contáctanos</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}  

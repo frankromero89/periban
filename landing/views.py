@@ -309,3 +309,6 @@ def presentation_card_01(request, user_id):
     }
     user_data = users.get(user_id, None)
     return render(request, 'landing/pres_card.html', {'user_data': user_data})
+
+def links(request):
+    return render(request, 'landing/links.html')

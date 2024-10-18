@@ -711,7 +711,6 @@ a .title-food .subtitle-menu{
     width: 100vw;
     height: 100vh;
     position: fixed;
-    background: rgb(30,30,30);
     background: linear-gradient(70deg, rgba(30,30,30,1) 0%, rgba(54,48,42,1) 86%);
     z-index: 1000;
     display: flex;
@@ -781,6 +780,53 @@ a .title-food .subtitle-menu{
 .url-pres-card{
     margin-top: 5em;
     text-decoration: none;
+}
+
+.wraper-link-three{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-image: url(../img/bg-links.jpg);
+    background-size: cover;
+    background-position: calc(30%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    flex-direction: column;
+}
+
+.logo-links{
+    margin-top: 5vh;
+    height: 10em;
+    position: relative;
+    top: 0;
+    margin-bottom: 3em;
+}
+
+.container-link {
+    background-color: rgba(0, 0, 0, 0.8);
+    border: 1px solid #BAA491;
+    border-radius: 10px;
+    font-weight: bold;
+    padding: .5em 4rem;
+    text-align: center;
+    margin-bottom: .5em;
+}
+
+.container-link:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+
+.link {
+    color: #BAA491;
+    text-decoration: none;
+}
+
+.container-link a:hover {
+    color: #BAA491 !important;
 }
 
 @media screen and (max-width: 1250px) {
