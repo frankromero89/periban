@@ -287,7 +287,7 @@ def presentation_card_01(request, user_id):
             "name": "Miriam",
             "last_name": "Baldovinos",
             "position": "Dirección Administrativa",
-            "email": "miriam@elperiban.com",
+            "email": ["miriam@elperiban.com"],
             "phone": "55 4343 3165",
             "waphone": "5543433165"
         },
@@ -295,12 +295,45 @@ def presentation_card_01(request, user_id):
             "name": "Norma",
             "last_name": "Rosales",
             "position": "Gerente de Marketing",
-            "email": "mkt@elperiban.com",
+            "email": ["mkt@elperiban.com"],
             "phone": "56 1205 44 08",
             "waphone": "525612054408"
-        }
+        },
+        "3": {
+            "name": "Roberto Carlos",
+            "last_name": "Baldovinos Cabrera",
+            "position": "Gerente de Operaciones",
+            "email": ["operacion3@elperiban.com"],
+            "phone": "55 3951 42 54",
+            "waphone": "525539514254"
+        },
+        "4": {
+            "name": "Brayan",
+            "last_name": "Baldovinos Ribera",
+            "position": "Gerente de Operaciones",
+            "email": ["baldovinosbrayan@elperiban.com" , "eventos@elperiban.com"],
+            "phone": "56 1205 44 06",
+            "waphone": "525612054406"
+        },
+        "5": {
+            "name": "Mario",
+            "last_name": "Mendoza",
+            "position": "Chef Corporativo",
+            "email": ["aybsur@elperiban.com"],
+            "phone": "55 9194 75 05",
+            "waphone": "525591947505"
+        },
+        "6": {
+            "name": "Juan Carlos",
+            "last_name": "Vázquez",
+            "position": "Gerente de Operaciones",
+            "email": ["operacion2@elperiban.com"],
+            "phone": "55 2722 31 56",
+            "waphone": "525527223156"
+        },
     }
     user_data = users.get(user_id, None)
+
     return render(request, 'landing/pres_card.html', {'user_data': user_data})
 
 def links(request):

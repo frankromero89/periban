@@ -13,8 +13,11 @@
             <div class="container-contact-data">
                 <div class="contact-data">
                     <img class="icon-pc" src="{% static 'img/icon-email.png' %}" alt="">
-                    <a href="mailto: {{ user_data.email }}" class="contact-data-copy">{{ user_data.email }}</p>
-                    
+                    <div class="container-email-card">
+                        {% for email in user_data.email %}
+                            <p href="mailto: {{ user_data.email }}" class="contact-data-copy">{{ email }}</p>
+                        {% endfor %}
+                    </div>                    
                 </div>
                 <div class="contact-data">
                     <img class="icon-pc" src="{% static 'img/icon-phone.png'%}" alt="">
