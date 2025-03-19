@@ -2,6 +2,13 @@
 <html lang="es-MX">
 <head>
     {% load static %}
+    {% block meta_tags %}
+        <!-- Meta tags por defecto -->
+        <meta property="og:title" content="Mi Web App">
+        <meta property="og:description" content="Descripción general">
+        <meta property="og:image" content="{% static 'img/periban-logo.png' %}">
+        <meta property="og:url" content="https://www.elperiban.com/">
+    {% endblock %}
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
