@@ -3,7 +3,7 @@
 {% block meta_tags %}
     <meta property="og:title" content="{{ user_data.name }} {{ user_data.last_name }} - {{ user_data.position }}">
     <meta property="og:description" content="Conoce a {{ user_data.name }} {{ user_data.last_name }}, parte del equipo de El Periban.">
-    <meta property="og:image" content="{{ request.build_absolute_uri }}static/img/logo_presentation_card.png">
+    <meta property="og:image" content="{% static 'img/logo_presentation_card.png' %}">
     <meta property="og:url" content="{{ request.build_absolute_uri }}">
 {% endblock %}
 {% block container %}
@@ -21,7 +21,7 @@
                     <img class="icon-pc" src="{% static 'img/icon-email.png' %}" alt="">
                     <div class="container-email-card">
                         {% for email in user_data.email %}
-                            <p href="mailto: {{ user_data.email }}" class="contact-data-copy">{{ email }}</p>
+                            <a href="mailto: {{ user_data.email }}" class="contact-data-copy">{{ email }}</a>
                         {% endfor %}
                     </div>                    
                 </div>
