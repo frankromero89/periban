@@ -81,6 +81,12 @@ def coverage(request):
         tel = '55 4957 7347'
         email = 'revolucion@elperiban.com'
         tel_link = '525549577347'
+    if branch == 'universidad':
+        name = 'UNIVERSIDAD'
+        address = 'Av. Universidad 789, Del Valle, CDMX'
+        tel = '55 5941 5084'
+        email = 'universidad@elperiban.com'
+        tel_link = '525559415084'
     return render(
         request,
         'landing/coverage.html',

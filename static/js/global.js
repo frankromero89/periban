@@ -86,6 +86,7 @@ function searchAddress(neiborhood) {
     var marina = data.marina;
     var cafetales = data.cafetales;
     var revolucion = data.revolucion;
+    var universidad = data.universidad;
 
     console.log(data);
 
@@ -116,6 +117,10 @@ function searchAddress(neiborhood) {
     } else if ($.inArray(neiborhood, revolucion) >= 0) {
       window.location.replace(
         window.location.origin + "/cobertura?sucursal=revolucion"
+      );
+    } else if ($.inArray(neiborhood, universidad) >= 0) {
+      window.location.replace(
+        window.location.origin + "/cobertura?sucursal=universidad"
       );
     } else {
       alert(
