@@ -216,8 +216,6 @@
         "arboleda del sur",
         "c.escollo",
         "los colorines"
-        
-        
     ],
     "ayuntamiento": [
         "la lonja",
@@ -364,6 +362,8 @@
     ],
     "revolucion": [
         "guadalupe inn",
+        "insurgentes mixcoac",
+        "mixcoac",
         "san angel",
         "campestre",
         "los alpes",
@@ -381,5 +381,13 @@
         "napoles",
         "loreto",
         "san pedro de los pinos"
+    ],
+    "universidad": [
+        "del valle sur",
+        "del valle centro",
+        "vértiz narvarte",
+        "santa cruz atoyac",
+        "portales",
+        "indepedencia"
     ]
 }
