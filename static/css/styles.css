@@ -231,8 +231,16 @@ a .title-food .subtitle-menu{
 }
 .container-trad-text{
     width: 70%;
+    font-size: 24px;
+    text-align: justify;
 }
-
+.container-trad-text .title{
+    font-size: 29px;
+    line-height: 2.5rem;
+}
+.container-trad-text .content-text{
+    margin-bottom: 3rem;
+}
 
 /* .menu-img-mob{
     width: 80%;
@@ -1197,6 +1205,11 @@ a .title-food .subtitle-menu{
     src: url(../fonts/gobold-italic.ttf) format("truetype");
 }
 
+@font-face {
+    font-family: playfairDisplay;
+    src: url(../fonts/playfair-display.ttf) format("truetype");
+}
+
 .disp-font{
     font-family: displayClean;
 }
@@ -1209,6 +1222,9 @@ a .title-food .subtitle-menu{
     font-family: goboldItalic;
 }
 
+.playfairDisplay{
+    font-family: playfairDisplay;
+}
 /* Colors */
 .gold{
     color: #BAA491;
