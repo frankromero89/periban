@@ -3,6 +3,7 @@ import pwd
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
+from django.contrib import messages
 from django.core.mail import BadHeaderError, send_mail
 from django.conf import settings
 from typing import List, cast
@@ -255,15 +256,20 @@ def invoices(request):
         ticket_image = ImageTicketForm(request.POST, request.FILES)
         if not ticket_image.is_valid():
             print(f"***errors: {ticket_image.errors}")
-        name = request.POST.get('nameInvoice')
-        branch = request.POST.get('branchInvoice')
-        rfc = request.POST.get('rfcInvoice')
-        ticket_num = request.POST.get('ticketNum')
-        payment_method = request.POST.get('paymentMethod')
-        ticket_amount = request.POST.get('ticketAmount')
-        phone = request.POST.get('phoneInvoice')
-        email = request.POST.get('emailInvoice')
-        interests = request.POST.get('textInvoice')
+            messages.error(request, 'Hubo un problema con la imagen del ticket. Por favor, intenta de nuevo.')
+            return render(request, 'landing/invoices.html')
+        name = request.POST.get('nameInvoice', '').strip()
+        branch = request.POST.get('branchInvoice', '').strip()
+        rfc = request.POST.get('rfcInvoice', '').strip()
+        ticket_num = request.POST.get('ticketNum', '').strip()
+        payment_method = request.POST.get('paymentMethod', '').strip()
+        ticket_amount = request.POST.get('ticketAmount', '').strip()
+        phone = request.POST.get('phoneInvoice', '').strip()
+        email = request.POST.get('emailInvoice', '').strip()
+        interests = request.POST.get('textInvoice', '').strip()
+        if not all([name, branch, rfc, ticket_num, phone, email]):
+            messages.error(request, 'Por favor, completa todos los campos obligatorios.')
+            return render(request, 'landing/invoices.html')
         subject = 'Problema facturación'
         message = f"""
             Una persona indicó que tiene problemas con su facturación sus datos són:
@@ -279,9 +285,11 @@ def invoices(request):
         """
         email_from = settings.EMAIL_HOST_USER
         branch_email = f'{branch}@elperiban.com'
-        admin_email = f'{branch}.periban@gmail.com' if branch != 'marina' else f'{branch}240.periban@gmail.com' 
+        admin_email = f'{branch}.periban@gmail.com' if branch != 'marina' else f'{branch}240.periban@gmail.com'
         send_mail(subject, message, email_from, [branch_email, admin_email], fail_silently=False)
         ticket_image.save(request.POST.get('nameInvoice'))
+        messages.success(request, '¡Tu solicitud fue enviada correctamente! Nos pondremos en contacto contigo pronto.')
+        return redirect('invoices')
     return render(request, 'landing/invoices.html')
 
 def privacy_notice(request):

@@ -7,8 +7,16 @@
                     <h1 class="gobold yellow">Aclaraciones de facturación</h1>
                 </div>
                 <div class="gobold">
-                    <p class="subtitle-invoices">¿No te llega tu factura? Escríbenos</p> 
+                    <p class="subtitle-invoices">¿No te llega tu factura? Escríbenos</p>
                 </div>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endfor %}
+                {% endif %}
                 <div class="form-employees">
                     <form method="post" action="{% url 'invoices' %}" enctype="multipart/form-data">
                         {% csrf_token %}
@@ -22,13 +30,12 @@
                                 <input type="text" name="branchInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
                             </div> -->
                             <div class="input-container">
-                                <label for="branchInputInvoice" class="form-label">Sucursal</label>
-                                <!-- <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">     -->
-                                <select class="form-select" name="branchInvoice" aria-label="Sucursal">
+                                <label for="branchSelectInvoice" class="form-label">Sucursal</label>
+                                <select class="form-select" name="branchInvoice" id="branchSelectInvoice" aria-label="Sucursal">
                                     <option value="ajusco">Ajusco</option>
                                     <option value="aztecas">Aztecas</option>
                                     <option value="marina">Marina</option>
-                                    <option value="roma">Roma</option>
+                                    <option value="universidad">Universidad</option>
                                     <option value="coapa">Coapa</option>
                                     <option value="cafetales">Cafetales</option>
                                     <option value="ayuntamiento">Ayuntamiento</option>
@@ -38,26 +45,25 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-container">
-                                <label for="branchInputInvoice" class="form-label">Rfc</label>
-                                <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
+                                <label for="rfcInputInvoice" class="form-label">Rfc</label>
+                                <input type="text" name="rfcInvoice" class="form-control" id="rfcInputInvoice">
                             </div>
                             <div class="input-container">
-                                <label for="branchInputInvoice" class="form-label">Nº de ticket</label>
-                                <input type="number" name="ticketNum" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">    
+                                <label for="ticketNumInput" class="form-label">Nº de ticket</label>
+                                <input type="number" name="ticketNum" class="form-control" id="ticketNumInput">
                             </div>
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-container">
-                                <label for="branchInputInvoice" class="form-label">Forma de pago</label>
-                                <!-- <input type="text" name="rfcInvoice" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp">     -->
-                                <select class="form-select" name="paymentMethod" aria-label="Forma de pago">
+                                <label for="paymentMethodSelect" class="form-label">Forma de pago</label>
+                                <select class="form-select" name="paymentMethod" id="paymentMethodSelect" aria-label="Forma de pago">
                                     <option value="efectivo">Efectivo</option>
                                     <option value="tarjeta">Pago con tarjeta</option>
                                   </select>
                             </div>
                             <div class="input-container">
-                                <label for="branchInputInvoice" class="form-label">Monto del ticket</label>
-                                <input type="number" name="ticketAmount" class="form-control" id="branchInputInvoice" aria-describedby="emailHelp" step=0.01>    
+                                <label for="ticketAmountInput" class="form-label">Monto del ticket</label>
+                                <input type="number" name="ticketAmount" class="form-control" id="ticketAmountInput" step="0.01">
                             </div>
                         </div>
                         <div class="input-group mb-3">
